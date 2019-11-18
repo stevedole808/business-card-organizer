@@ -2,7 +2,13 @@
   text-align: center;
 }
 
-.paper{
+img{
+  max-height: 2rem;
+  margin: auto;
+  border-radius: 15px;
+}
+
+.paper-container{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -13,19 +19,28 @@ form{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 50%;
+  width: 75%;
   margin: 2rem auto;
-  padding: 1rem;
+  padding: 1.5rem;
   align-items: center;
 }
 
-
-.buttons{
-  width: 25%;
+.login{
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: stretch;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto 3rem;
+  height: 6rem;
+}
+
+.register{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   margin: auto 3rem;
   height: 6rem;
 }
