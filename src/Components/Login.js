@@ -57,6 +57,7 @@ export default function Login () {
     return (
         <>
         <Paper component="form" className={classes.root}>
+            <div className='paper'>
             <form>
                 <FormControl className={classes.margin}>
                 <InputLabel htmlFor="username">Username</InputLabel>
@@ -115,6 +116,7 @@ export default function Login () {
                 Log In
             </Button>
             </Box>
+            </div>
         </Paper>
         </>
     )
