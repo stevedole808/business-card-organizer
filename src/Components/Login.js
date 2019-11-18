@@ -1,13 +1,9 @@
 import React from "react";
 import EmailIcon from '@material-ui/icons/Email';
 import { makeStyles } from '@material-ui/core/styles';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Box from '@material-ui/core/Box';
-import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
-import Grid from '@material-ui/core/Grid';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
@@ -25,14 +21,6 @@ export default function Login () {
 
     const handleChange = prop => event => {
         setValues({ ...values, [prop]: event.target.value });
-    };
-
-    const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
-    };
-
-    const handleMouseDownPassword = event => {
-    event.preventDefault();
     };
 
     const useStyles = makeStyles(theme => ({
@@ -57,64 +45,48 @@ export default function Login () {
     return (
         <>
         <Paper component="form" className={classes.root}>
+            <div className='paper'>
             <form>
-                <FormControl className={classes.margin}>
-                <InputLabel htmlFor="username">Username</InputLabel>
-                <Input
-                id="username"
-                type='text'
-                value={values.username}
-                startAdornment={
-                    <InputAdornment position="start">
-                    <AccountCircle />
-                    </InputAdornment>
-                }
+                <TextField
+                    id="username"
+                    label="Username"
+                    className={`${classes.textField} input`}
+                    margin="normal"
+                    variant="outlined"
+                    value={values.username}
                 />
-                </FormControl>
-
-                <FormControl className={classes.margin}>
-                    <InputLabel htmlFor="email">Email</InputLabel>
-                    <Input
+            
+                <TextField
                     id="email"
+                    label="Email"
                     type='email'
+                    className={`${classes.textField} input`}
+                    margin="normal"
+                    variant="outlined"
                     value={values.email}
-                    startAdornment={
-                        <InputAdornment position="start">
-                        <EmailIcon />
-                        </InputAdornment>
-                    }
-                    />
-                </FormControl>
+                />
 
-                <FormControl className={classes.margin}>
-                    <InputLabel htmlFor="password">Password</InputLabel>
-                    <Input
-                        id="password"
-                        type='password'
-                        value={values.password}
-                        onChange={handleChange('password')}
-                        endAdornment={
-                        <InputAdornment position="end">
-                            <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}
-                            >
-                            {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                            </IconButton>
-                        </InputAdornment>
-                        }
-                    />
-                </FormControl>
+                <TextField
+                    id="password"
+                    label="Password"
+                    className={`${classes.textField} input`}
+                    type="password"
+                    margin="normal"
+                    variant="outlined"
+                    value={values.password}
+                    onChange={handleChange('password')}
+                />
             </form>
+
             <Box className='buttons'>
             <Button variant="contained" color="primary" className={classes.button} >
                 Register
-            </Button>{' '}
+            </Button>
             <Button color="primary" className={classes.button} >
                 Log In
             </Button>
             </Box>
+            </div>
         </Paper>
         </>
     )
