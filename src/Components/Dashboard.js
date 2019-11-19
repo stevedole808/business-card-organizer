@@ -7,22 +7,22 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const useStyles = makeStyles(theme => ({
   card: {
     width: 750,
   },
   media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
+    height: 100
+    // paddingTop: '56.25%', // 16:9
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -34,8 +34,8 @@ const useStyles = makeStyles(theme => ({
   expandOpen: {
     transform: 'rotate(180deg)',
   },
-  avatar: {
-    backgroundColor: red[500],
+  control: {
+    padding: theme.spacing(2),
   },
 }));
 
@@ -49,44 +49,73 @@ const Dashboard = () => {
 
   return (
     <div className='container'>
-        <Card className={classes.card}>
-        <CardHeader
-            action={
-            <IconButton aria-label="settings">
-                <MoreVertIcon />
-            </IconButton>
-            }
-        />
-        <CardContent>
-            <Typography variant="body2" color="textSecondary" component="p">
-            The User's business card should go here
-            </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-            <IconButton
-                className={clsx(classes.expand, {
-                    [classes.expandOpen]: expanded,
-                })}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="show QR code"
-            >
-            <ExpandMoreIcon />
-            </IconButton>
-        </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-            <CardContent>
-            <Typography paragraph>
-                QR code here!
-            </Typography>
-            <CardMedia
-                className={classes.media}
-                image="src/Images/wikipediaQR.svg"
-                title="Wikipedia QR code"
+        <Card className={classes.card} boxShadow={3}>
+            <CardHeader
+                action={
+                <Button color='textSecondary'>Edit</Button>
+                }
             />
+            <CardContent>
+                <Typography variant="body2" color="textSecondary" component="p">
+                The User's business card should go here
+                </Typography>
             </CardContent>
-        </Collapse>
+            <CardActions disableSpacing>
+                <IconButton
+                    className={clsx(classes.expand, {
+                        [classes.expandOpen]: expanded,
+                    })}
+                    onClick={handleExpandClick}
+                    aria-expanded={expanded}
+                    aria-label="show QR code"
+                >
+                    <ExpandMoreIcon />
+                </IconButton>
+            </CardActions>
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                <Typography paragraph>
+                    QR code here!
+                </Typography>
+                <CardMedia
+                    className={classes.media}
+                    image="src/Images/wikipediaQR.svg"
+                    title="Wikipedia QR code"
+                />
+                </CardContent>
+            </Collapse>
         </Card>
+        
+        <div className={classes.root}>
+            <Grid
+                container
+                spacing={8}
+                direction="row"
+                justify="center"
+                alignItems="center"
+            >
+                <Grid item xs={6} s={12}>
+                    <Card className='card' boxShadow={3}>
+                        <CardContent>
+                            <Typography variant="body2" color="textPrimary" component="h5">
+                                View your saved business cards
+                            </Typography>
+                        </CardContent>
+                        <Button variant='contained' color='primary'>View Saved Cards</Button>
+                    </Card>
+                </Grid>
+                <Grid item xs={6} s={12}>
+                    <Card className='card' boxShadow={3}>
+                        <CardContent>
+                            <Typography variant="body2" color="textPrimary" component="h5">
+                                Scan a QR code, or fill out the form to add a new card.
+                            </Typography>
+                        </CardContent>
+                        <Button variant='contained' color='secondary'>Add New Card</Button>
+                    </Card>
+                </Grid>
+            </Grid>
+        </div>
     </div>
   );
 }

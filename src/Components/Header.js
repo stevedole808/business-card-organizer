@@ -8,7 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import logo from '/Users/taylorcool/Documents/GitHub/front-end/src/Images/meishi1.jpg';
+import logo from '../Images/meishi1.jpg';
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -68,7 +68,7 @@ const Header = () => {
   const menuId = 'primary-search-account-menu';
   const renderNavLoggedIn = (
     <div>
-    <NavLink to='/' className='nav-link'>
+    <NavLink to='/protected' className='nav-link'>
         <MenuItem onClick={handleMenuClose}>My Profile</MenuItem>
     </NavLink>
     <NavLink to='/' className='nav-link'>

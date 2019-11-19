@@ -9,7 +9,7 @@ img{
 }
 
 .container{
-  width: 90%;
+  width: 95%;
   margin: 5rem auto;
   display: flex;
   flex-direction: column;
@@ -52,6 +52,15 @@ form{
   align-items: center;
   margin: auto 3rem;
   height: 6rem;
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 3rem auto;
+  height: 8.5rem;
 }
 
 .nav-link{
