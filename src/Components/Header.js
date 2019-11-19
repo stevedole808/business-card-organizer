@@ -1,4 +1,3 @@
-
 import React from "react";
 import { BrowserRouter as NavLink } from "react-router-dom";
 import { fade, makeStyles } from "@material-ui/core/styles";
@@ -11,7 +10,6 @@ import Menu from "@material-ui/core/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import logo from "../Images/meishi1.jpg";
-
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -70,26 +68,29 @@ const Header = () => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  // const logOut = e => {
+  //   e.preventDefault();
+  //   localStorage.removeItem("token", null);
+  // };
 
-  const menuId = 'primary-search-account-menu';
+  const menuId = "primary-search-account-menu";
   const renderNavLoggedIn = (
     <>
-    <NavLink to='/' className='nav-link'>
+      <NavLink to="/" className="nav-link">
         <MenuItem onClick={handleMenuClose}>My Profile</MenuItem>
-    </NavLink>
-    <NavLink to='/' className='nav-link'>
+      </NavLink>
+      <NavLink to="/" className="nav-link">
         <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
-    </NavLink>
+      </NavLink>
     </>
   );
   const renderNavLoggedOut = (
     <>
-    <NavLink to='/login' className='nav-link'>
+      <NavLink to="/login" className="nav-link">
         <MenuItem onClick={handleMenuClose}>Log In</MenuItem>
-    </NavLink>
+      </NavLink>
     </>
   );
-
 
   const renderMenu = (
     <Menu
@@ -101,9 +102,7 @@ const Header = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-    
-    {localStorage.getItem("token") ? renderNavLoggedIn : renderNavLoggedOut}
-
+      {localStorage.getItem("token") ? renderNavLoggedIn : renderNavLoggedOut}
     </Menu>
   );
 
@@ -135,9 +134,7 @@ const Header = () => {
     <div className={`${classes.grow} header`}>
       <AppBar position="static">
         <Toolbar>
-
-        <img src={logo} alt='Meishi logo' />
-        
+          <img src={logo} alt="Meishi logo" />
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
