@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter as NavLink } from "react-router-dom";
 
-import { fade, makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MoreIcon from "@material-ui/icons/MoreVert";
-import logo from "../Images/meishi1.jpg";
+import { fade, makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import MoreIcon from '@material-ui/icons/MoreVert';
+import logo from '../Images/meishi1.jpg';
 
 
 const useStyles = makeStyles(theme => ({
@@ -69,21 +69,21 @@ const Header = () => {
 
   const menuId = 'primary-search-account-menu';
   const renderNavLoggedIn = (
-    <>
-    <NavLink to='/' className='nav-link'>
+    <div>
+    <NavLink to='/protected' className='nav-link'>
         <MenuItem onClick={handleMenuClose}>My Profile</MenuItem>
     </NavLink>
     <NavLink to='/' className='nav-link'>
         <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
     </NavLink>
-    </>
+    </div>
   );
   const renderNavLoggedOut = (
-    <>
+    <div>
     <NavLink to='/login' className='nav-link'>
         <MenuItem onClick={handleMenuClose}>Log In</MenuItem>
     </NavLink>
-    </>
+    </div>
   );
 
   const renderMenu = (
