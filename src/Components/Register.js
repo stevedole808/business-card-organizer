@@ -50,7 +50,6 @@ const Register = props => {
         console.log(response, props);
         // localStorage.setItem("token");
         props.history.push("/login");
-
       })
       .catch(error => console.log("Login Error", error.response));
   };
@@ -116,7 +115,6 @@ const Register = props => {
                 Log In
               </Button>
             </Link>
-
           </div>
         </div>
       </Paper>
@@ -124,3 +122,4 @@ const Register = props => {
   );
 };
 export default Register;
+// this is for change
