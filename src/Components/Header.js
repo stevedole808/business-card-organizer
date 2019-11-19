@@ -8,7 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import logo from '/Users/taylorcool/Documents/GitHub/front-end/src/Images/meishi1.jpg';
+// import logo from '/Users/taylorcool/Documents/GitHub/front-end/src/Images/meishi1.jpg';
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -128,7 +128,7 @@ const Header = () => {
     <div className={`${classes.grow} header`}>
       <AppBar position="static">
         <Toolbar>
-        <img src={logo} alt='Meishi logo' />
+        {/* <img src={logo} alt='Meishi logo' /> */}
         
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>

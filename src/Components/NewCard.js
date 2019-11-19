@@ -54,7 +54,7 @@ const classes = useStyles();
             <Grid item xs={12} sm={6}>
             <div>
             <TextField className={classes.TextField}
-              name="firstname"
+              name="first_name"
               label="First Name"
               margin="normal"
               variant="outlined"
@@ -66,23 +66,11 @@ const classes = useStyles();
           <Grid item xs={12} sm={6}>
             <div>
             <TextField className={classes.TextField}
-              name="lastname"
+              name="last_name"
               label="Last Name"
               margin="normal"
               variant="outlined"
               value ={values.lastname}
-              onChange={handleChange}
-            />
-            </div>
-            </Grid>
-          <Grid item xs={12}>
-            <div>
-            <TextField className={classes.TextField}
-              name="mobile"
-              label="Mobile"
-              fullWidth
-              variant="outlined"
-              value ={values.mobile}
               onChange={handleChange}
             />
             </div>
@@ -100,16 +88,6 @@ const classes = useStyles();
             </div>
             </Grid>
           <Grid item xs={12} sm={6}>
-            <div>
-            <TextField className={classes.TextField}
-              name="fax"
-              label="Fax"              
-              margin="normal"
-              variant="outlined"
-              value ={values.fax}
-                                          
-            />
-            </div>
             </Grid>
           <Grid item xs={12}>
             <div>
@@ -171,7 +149,7 @@ const classes = useStyles();
             />
             </div>
             </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={3}>
             <div>
             <TextField className={classes.TextField}
               name="zip"
