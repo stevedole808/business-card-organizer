@@ -1,10 +1,12 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import AxiosWithAuth from "../Utils/AxiosWithAuth";
+import Login from "./Login";
 
 const Register = props => {
   const [values, setValues] = React.useState({
@@ -96,9 +98,11 @@ const Register = props => {
           </form>
           <div className='login'>
           <Typography variant='subtitle2' component='p'>Already signed up?</Typography>
-          <Button color="primary" className={classes.button}>
-            Log In
-          </Button>
+          <Link to='/login'>
+            <Button color="primary" className={classes.button}>
+              Log In
+            </Button>
+          </Link>
           </div>
         </div>
       </Paper>
