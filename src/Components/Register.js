@@ -6,7 +6,6 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import AxiosWithAuth from "../Utils/AxiosWithAuth";
-import Login from "./Login";
 
 const Register = props => {
   const [values, setValues] = React.useState({
