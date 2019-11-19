@@ -5,7 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
-import AxiosWithAuth from "../Utils/AxiosWithAuth";
+import axios from "axios";
 
 const Login = props => {
   const [values, setValues] = React.useState({
@@ -40,8 +40,11 @@ const Login = props => {
   // On submit to POST user to api //
   const onSubmit = event => {
     event.preventDefault();
-    AxiosWithAuth()
-      .post("https://businesscardorganizer.herokuapp.com/auth/register", values)
+    axios
+      .post(
+        "https://businesscardorganizer.herokuapp.com/api/auth/login",
+        values
+      )
       .then(response => {
         localStorage.setItem("token", response.data.payload);
         props.history.push("/protected");
@@ -84,13 +87,15 @@ const Login = props => {
               Log In
             </Button>
           </form>
-          <div className='register'>
-          <Typography variant='subtitle2' component='p'>Not signed up?</Typography>
-          <Link to='/'>
-            <Button color="primary" className={classes.button}>
+          <div className="register">
+            <Typography variant="subtitle2" component="p">
+              Not signed up?
+            </Typography>
+            <Link to="/">
+              <Button color="primary" className={classes.button}>
                 Register
-            </Button>
-          </Link>
+              </Button>
+            </Link>
           </div>
         </div>
       </Paper>
