@@ -1,11 +1,11 @@
 import React from "react";
-import { BrowserRouter as Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
-import AxiosWithAuth from "../Utils/AxiosWithAuth";
+import axios from "axios";
 
 const Register = props => {
   const [values, setValues] = React.useState({
@@ -40,12 +40,15 @@ const Register = props => {
   // On submit to POST user to api //
   const onSubmit = event => {
     event.preventDefault();
-    AxiosWithAuth()
-      .post("api/auth/register", values)
+    axios
+      .post(
+        "https://businesscardorganizer.herokuapp.com/api/auth/register",
+        values
+      )
       .then(response => {
-        console.log(response);
-        localStorage.setItem("token");
-        props.history.push("/protected");
+        console.log(response, props);
+        // localStorage.setItem("token");
+        props.history.push("/login");
       })
       .catch(error => console.log("Login Error", error.response));
   };
@@ -102,7 +105,11 @@ const Register = props => {
               Already signed up?
             </Typography>
             <Link to="/login">
-              <Button color="primary" className={classes.button}>
+              <Button
+                color="primary"
+                className={classes.button}
+                onClick={() => console.log("clicked")}
+              >
                 Log In
               </Button>
             </Link>
