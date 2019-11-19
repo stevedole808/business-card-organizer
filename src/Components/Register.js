@@ -40,6 +40,7 @@ const Register = props => {
   // On submit to POST user to api //
   const onSubmit = event => {
     event.preventDefault();
+
     axios
       .post(
         "https://businesscardorganizer.herokuapp.com/api/auth/register",
@@ -49,6 +50,7 @@ const Register = props => {
         console.log(response, props);
         // localStorage.setItem("token");
         props.history.push("/login");
+
       })
       .catch(error => console.log("Login Error", error.response));
   };
@@ -100,6 +102,7 @@ const Register = props => {
               Register
             </Button>
           </form>
+
           <div className="login">
             <Typography variant="subtitle2" component="p">
               Already signed up?
@@ -113,6 +116,7 @@ const Register = props => {
                 Log In
               </Button>
             </Link>
+
           </div>
         </div>
       </Paper>
