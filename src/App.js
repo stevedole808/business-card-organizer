@@ -3,7 +3,8 @@ import Register from "./Components/Register";
 import "./App.css";
 import Header from "./Components/Header";
 import Login from "./Components/Login";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Dashboard from "./Components/Dashboard"
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
   return(
@@ -12,6 +13,7 @@ function App() {
         <Header />
         <Route exact path='/' component={Register} />
         <Route path='/login' component={Login} />
+        <Route path='/dashboard' component={Dashboard} />
       </div>
     </Router>
   )

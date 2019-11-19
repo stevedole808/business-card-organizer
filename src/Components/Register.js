@@ -1,12 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import AxiosWithAuth from "../Utils/AxiosWithAuth";
-import Login from "./Login";
 
 const Register = props => {
   const [values, setValues] = React.useState({
@@ -32,7 +31,7 @@ const Register = props => {
       marginTop: theme.spacing(3)
     },
     textField: {
-      width: 200
+      width: 375
     }
   }));
 
@@ -82,6 +81,7 @@ const Register = props => {
               className={`${classes.textField} input`}
               type="password"
               margin="normal"
+              fullwidth
               variant="outlined"
               value={values.password}
               onChange={handleChange}
