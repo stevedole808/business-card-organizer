@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -110,8 +110,12 @@ const Header = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>My Card</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
+        <NavLink to='/login' className='nav-link'>
+            <MenuItem onClick={handleMenuClose}>Log In</MenuItem>
+        </NavLink>
+        <NavLink to='/' className='nav-link'>
+            <MenuItem onClick={handleMenuClose}>Register</MenuItem>
+        </NavLink>
     </Menu>
   );
 
@@ -144,19 +148,7 @@ const Header = () => {
       <AppBar position="static">
         <Toolbar>
         <img src={logo} alt='Meishi logo' />
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
+        
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton
