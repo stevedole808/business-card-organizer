@@ -4,12 +4,11 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import InputBase from "@material-ui/core/InputBase";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import logo from "../Images/meishi1.jpg";
+import logo from "/Users/taylorcool/Documents/GitHub/front-end/src/Images/meishi1.jpg";
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -24,11 +23,9 @@ const useStyles = makeStyles(theme => ({
       display: "block"
     }
   },
-
   inputRoot: {
     color: "inherit"
   },
-
   sectionDesktop: {
     display: "none",
     [theme.breakpoints.up("md")]: {
@@ -67,11 +64,6 @@ const Header = () => {
   const handleMobileMenuOpen = event => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
-  // const logOut = e => {
-  //   e.preventDefault();
-  //   localStorage.removeItem("token", null);
-  // };
 
   const menuId = "primary-search-account-menu";
   const renderNavLoggedIn = (
