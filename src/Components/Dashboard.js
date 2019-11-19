@@ -10,11 +10,10 @@ import Collapse from '@material-ui/core/Collapse';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Fab from '@material-ui/core/Fab';
+import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -52,7 +51,9 @@ const Dashboard = () => {
         <Card className={classes.card} boxShadow={3}>
             <CardHeader
                 action={
-                <Button color='textSecondary'>Edit</Button>
+                    <Fab size='small' color="secondary" aria-label="edit" className={classes.fab}>
+                        <EditIcon />
+                    </Fab>
                 }
             />
             <CardContent>
