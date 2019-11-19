@@ -73,21 +73,21 @@ const Header = () => {
 
   const menuId = 'primary-search-account-menu';
   const renderNavLoggedIn = (
-    <>
+    <div>
     <NavLink to='/' className='nav-link'>
         <MenuItem onClick={handleMenuClose}>My Profile</MenuItem>
     </NavLink>
     <NavLink to='/' className='nav-link'>
         <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
     </NavLink>
-    </>
+    </div>
   );
   const renderNavLoggedOut = (
-    <>
+    <div>
     <NavLink to='/login' className='nav-link'>
         <MenuItem onClick={handleMenuClose}>Log In</MenuItem>
     </NavLink>
-    </>
+    </div>
   );
 
 
