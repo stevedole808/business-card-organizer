@@ -1,15 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import AxiosWithAuth from "../Utils/AxiosWithAuth";
-import Register from "./Register";
+import Login from "./Login";
 
-const Login = props => {
+const Register = props => {
   const [values, setValues] = React.useState({
     username: "",
     email: "",
@@ -67,6 +66,17 @@ const Login = props => {
             />
 
             <TextField
+              name="email"
+              label="Email"
+              type="email"
+              className={`${classes.textField} input`}
+              margin="normal"
+              variant="outlined"
+              value={values.email}
+              onChange={handleChange}
+            />
+
+            <TextField
               name="password"
               label="Password"
               className={`${classes.textField} input`}
@@ -83,14 +93,14 @@ const Login = props => {
               color="primary"
               className={classes.button}
             >
-              Log In
+              Register
             </Button>
           </form>
-          <div className='register'>
-          <Typography variant='subtitle2' component='p'>Not signed up?</Typography>
-          <Link to='/'>
+          <div className='login'>
+          <Typography variant='subtitle2' component='p'>Already signed up?</Typography>
+          <Link to='/login'>
             <Button color="primary" className={classes.button}>
-                Register
+              Log In
             </Button>
           </Link>
           </div>
@@ -99,4 +109,4 @@ const Login = props => {
     </>
   );
 };
-export default Login;
+export default Register;
