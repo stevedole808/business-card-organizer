@@ -41,7 +41,7 @@ const Login = props => {
   const onSubmit = event => {
     event.preventDefault();
     axios
-      .post("https://businesscardorganizer.herokuapp.com/api/auth/register", values)
+      .post("https://businesscardorganizer.herokuapp.com/api/auth/login", values)
       .then(response => {
         localStorage.setItem("token", response.data.payload);
         props.history.push("/protected");
