@@ -1,12 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
+import { BrowserRouter as NavLink } from "react-router-dom";
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import logo from '/Users/taylorcool/Documents/GitHub/front-end/src/Images/meishi1.jpg';
@@ -24,40 +23,8 @@ const useStyles = makeStyles(theme => ({
       display: 'block',
     },
   },
-  search: {
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto',
-    },
-  },
-  searchIcon: {
-    width: theme.spacing(7),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   inputRoot: {
     color: 'inherit',
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 7),
-    transition: theme.transitions.create('width'),
-    width: '100%',
-    [theme.breakpoints.up('md')]: {
-      width: 200,
-    },
   },
   sectionDesktop: {
     display: 'none',
@@ -99,6 +66,24 @@ const Header = () => {
   };
 
   const menuId = 'primary-search-account-menu';
+  const renderNavLoggedIn = (
+    <>
+    <NavLink to='/' className='nav-link'>
+        <MenuItem onClick={handleMenuClose}>My Profile</MenuItem>
+    </NavLink>
+    <NavLink to='/' className='nav-link'>
+        <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
+    </NavLink>
+    </>
+  );
+  const renderNavLoggedOut = (
+    <>
+    <NavLink to='/login' className='nav-link'>
+        <MenuItem onClick={handleMenuClose}>Log In</MenuItem>
+    </NavLink>
+    </>
+  );
+
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -109,12 +94,9 @@ const Header = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-        <NavLink to='/' className='nav-link'>
-            <MenuItem onClick={handleMenuClose}>My Profile</MenuItem>
-        </NavLink>
-        <NavLink to='/' className='nav-link'>
-            <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
-        </NavLink>
+    
+    {localStorage.getItem("token") ? renderNavLoggedIn : renderNavLoggedOut}
+
     </Menu>
   );
 

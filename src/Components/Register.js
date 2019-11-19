@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
@@ -31,7 +31,7 @@ const Register = props => {
       marginTop: theme.spacing(3)
     },
     textField: {
-      width: 200
+      width: 375
     }
   }));
 
@@ -81,6 +81,7 @@ const Register = props => {
               className={`${classes.textField} input`}
               type="password"
               margin="normal"
+              fullwidth
               variant="outlined"
               value={values.password}
               onChange={handleChange}
