@@ -5,7 +5,7 @@ import Header from "./Components/Header";
 import Login from "./Components/Login";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PrivateRoute from "./Components/PrivateRoute";
-// import Dashboard from "./Components/Dashboard";
+import Dashboard from "./Components/Dashboard";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <div className="App">
         <Header />
         <Switch>
-          <PrivateRoute path="/protected" component={Header} />
+          <PrivateRoute path="/protected" component={Dashboard} />
           <Route exact path="/" component={Register} />
           <Route path="/login" component={Login} />
         </Switch>
