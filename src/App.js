@@ -3,20 +3,27 @@ import Register from "./Components/Register";
 import "./App.css";
 import Header from "./Components/Header";
 import Login from "./Components/Login";
-import Dashboard from "./Components/Dashboard"
-import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import PrivateRoute from "./Components/PrivateRoute";
+import Dashboard from "./Components/Dashboard";
+
 
 function App() {
-  return(
-    <Router> 
+  return (
+    <Router>
       <div className="App">
         <Header />
-        <Route exact path='/' component={Register} />
-        <Route path='/login' component={Login} />
-        <Route path='/dashboard' component={Dashboard} />
+
+        <Switch>
+          <PrivateRoute path="/protected" component={Dashboard} />
+          <Route exact path="/" component={Register} />
+          <Route path="/login" component={Login} />
+        </Switch>
+
       </div>
     </Router>
-  )
+  );
 }
 
 export default App;

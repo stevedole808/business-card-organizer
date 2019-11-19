@@ -41,9 +41,10 @@ const Register = props => {
   const onSubmit = event => {
     event.preventDefault();
     AxiosWithAuth()
-      .post("https://businesscardorganizer.herokuapp.com/auth/register", values)
+      .post("api/auth/register", values)
       .then(response => {
-        localStorage.setItem("token", response.data.payload);
+        console.log(response);
+        localStorage.setItem("token");
         props.history.push("/protected");
       })
       .catch(error => console.log("Login Error", error.response));
@@ -96,13 +97,15 @@ const Register = props => {
               Register
             </Button>
           </form>
-          <div className='login'>
-          <Typography variant='subtitle2' component='p'>Already signed up?</Typography>
-          <Link to='/login'>
-            <Button color="primary" className={classes.button}>
-              Log In
-            </Button>
-          </Link>
+          <div className="login">
+            <Typography variant="subtitle2" component="p">
+              Already signed up?
+            </Typography>
+            <Link to="/login">
+              <Button color="primary" className={classes.button}>
+                Log In
+              </Button>
+            </Link>
           </div>
         </div>
       </Paper>
