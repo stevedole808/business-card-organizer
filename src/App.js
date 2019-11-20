@@ -3,8 +3,7 @@ import Register from "./Components/Register";
 import "./App.css";
 import Header from "./Components/Header";
 import Login from "./Components/Login";
-import Scanner from "./Components/Scanner";
-import NewCard from "./Components/NewCard";
+import Scanner from "./Components/Scanner"
 
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PrivateRoute from "./Components/PrivateRoute";
@@ -22,7 +21,6 @@ function App() {
           <Route exact path="/" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/scanner" component={Scanner} />
-          <Route path="/card/addnew" component={NewCard} />
         </Switch>
       </div>
     </Router>

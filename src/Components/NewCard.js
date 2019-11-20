@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Grid, Box } from '@material-ui/core'
 
-
 const useStyles = makeStyles(theme => ({
     root: {
     flexGrow: 1,
@@ -28,7 +27,6 @@ const useStyles = makeStyles(theme => ({
   const theme = {
     spacing: value => value ** 2,
   }
-
 
   const Form = props =>  {
   const [values, setValues] = React.useState({
@@ -208,6 +206,4 @@ const classes = useStyles();
     );
   }
 
-
   export default Form
-
