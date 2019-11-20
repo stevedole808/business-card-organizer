@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -48,7 +49,7 @@ const Dashboard = () => {
 
   return (
     <div className='container'>
-        <Card className={classes.card} boxShadow={3}>
+        <Card className={classes.card}>
             <CardHeader
                 action={
                     <Fab size='small' color="secondary" aria-label="edit" className={classes.fab}>
@@ -96,7 +97,7 @@ const Dashboard = () => {
                 alignItems="center"
             >
                 <Grid item xs={6} s={12}>
-                    <Card className='card' boxShadow={3}>
+                    <Card className='card'>
                         <CardContent>
                             <Typography variant="body2" color="textPrimary" component="h5">
                                 View your saved business cards
@@ -106,13 +107,15 @@ const Dashboard = () => {
                     </Card>
                 </Grid>
                 <Grid item xs={6} s={12}>
-                    <Card className='card' boxShadow={3}>
+                    <Card className='card'>
                         <CardContent>
                             <Typography variant="body2" color="textPrimary" component="h5">
                                 Scan a QR code, or fill out the form to add a new card.
                             </Typography>
                         </CardContent>
-                        <Button variant='contained' color='secondary'>Add New Card</Button>
+                        <Link to='/scanner'>
+                            <Button variant='contained' color='secondary'>Add New Card</Button>
+                        </Link>
                     </Card>
                 </Grid>
             </Grid>
