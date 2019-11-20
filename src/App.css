@@ -14,7 +14,7 @@ img{
   max-height: 2rem;
   margin: auto;
   border-radius: 5px;
-  box-shadow: 2px 3px 6px 2px rgba(0,0,0,0.6);
+  box-shadow: 2px 3px 6px 2px rgba(0,0,0,0.4);
 }
 
 .container{
@@ -75,6 +75,11 @@ form{
 .nav-link{
   text-decoration: none;
   background-color: whitesmoke;
+}
+
+.scanner{
+  width: 40%;
+  margin: 3rem auto;
 }
 
 @media only screen and (max-width: 700px) {
