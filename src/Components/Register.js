@@ -86,7 +86,6 @@ const Register = props => {
               className={`${classes.textField} input`}
               type="password"
               margin="normal"
-              fullwidth
               variant="outlined"
               value={values.password}
               onChange={handleChange}
