@@ -4,13 +4,11 @@ import "./App.css";
 import Header from "./Components/Header";
 import Login from "./Components/Login";
 import Scanner from "./Components/Scanner"
-
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PrivateRoute from "./Components/PrivateRoute";
 import Dashboard from "./Components/Dashboard";
-import Card from "./Components/Card"
+import {BizCard} from "./Components/BizCard"
 import CardList from "./Components/CardList"
-
 function App() {
   return(
     <Router> 
@@ -21,6 +19,8 @@ function App() {
           <Route exact path="/" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/scanner" component={Scanner} />
+          <Route path="/bizcard" component={BizCard} />
+          <Route path="/cardlist" component={CardList} />
         </Switch>
       </div>
     </Router>
