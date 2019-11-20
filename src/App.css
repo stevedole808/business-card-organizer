@@ -5,7 +5,17 @@
 img{
   max-height: 2rem;
   margin: auto;
-  border-radius: 15px;
+  border-radius: 5px;
+  box-shadow: 2px 3px 6px 2px rgba(0,0,0,0.6);
+}
+
+.container{
+  width: 95%;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .paper-container{
@@ -43,6 +53,15 @@ form{
   align-items: center;
   margin: auto 3rem;
   height: 6rem;
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 3rem auto;
+  height: 8.5rem;
 }
 
 .nav-link{

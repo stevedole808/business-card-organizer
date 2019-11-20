@@ -53,7 +53,7 @@ const classes = useStyles();
     return (
     <form>
       <div className={classes.root}>
-        <Box border={1} borderRadius={6} width={800} p={2} className={classes.box}>
+        <Box border={1} borderRadius={6} width={500} p={2} className={classes.box}>
             <Grid container spacing={1} className={classes.root} >
                 <Grid item xs={6}>
                     <div className={classes.paper}>
