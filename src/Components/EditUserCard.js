@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AxiosWithAuth from "../Utils/AxiosWithAuth";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import { Grid, Box } from "@material-ui/core";
+import { Grid, Box, Button } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,43 +27,45 @@ const theme = {
   spacing: value => value ** 2
 };
 
-const EditUserCard = () => {
+const initialUser = {
+  first_name: "",
+  last_name: "",
+  phone: "",
+  email: "",
+  company: "",
+  job: "",
+  street: "",
+  city: "",
+  zip: "",
+  state: "",
+  country: "",
+  website: ""
+};
+
+const EditUserCard = card => {
   const [editing, setEditing] = useState(false);
-  const [values, setValues] = useState({
-    first_name: "",
-    last_name: "",
-    phone: "",
-    email: "",
-    company: "",
-    job: "",
-    street: "",
-    city: "",
-    zip: "",
-    state: "",
-    country: "",
-    website: ""
-  });
+  const [userToEdit, setUserToEdit] = useState(initialUser);
 
   const editUser = user => {
     setEditing(true);
-    setValues(user);
+    setUserToEdit(userInfo);
   };
 
-  //   const saveEdit = e => {
-  //     e.preventDefault();
-  //     AxiosWithAuth()
-  //       .put(`/api/auth/${fieldToEdit.id}`, fieldToEdit)
-  //       .then(response => {
-  //         const newUser = userInfo.map(userInfo => {
-  //           if (fieldToEdit.id === userInfo.id) {
-  //             return response.data;
-  //           } else {
-  //             return userInfo;
-  //           }
-  //         });
-  //       });
-  //     updateUser;
-  //   };
+  const saveEdit = e => {
+    e.preventDefault();
+    AxiosWithAuth()
+      .put(`api/cards/${userToEdit.id}`, userToEdit)
+      .then(response => {
+        const newUser = userInfo.map(userInfo => {
+          if (userToEdit.id === card.id) {
+            return response.data;
+          } else {
+            return userInfo;
+          }
+        });
+      });
+    updateUse(newUser);
+  };
   const handleChange = event => {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
@@ -89,7 +91,7 @@ const EditUserCard = () => {
                   label="First Name"
                   margin="normal"
                   variant="outlined"
-                  value={values.firstname}
+                  value={userToEdit.firstname}
                   onChange={handleChange}
                 />
               </div>
@@ -102,7 +104,7 @@ const EditUserCard = () => {
                   label="Last Name"
                   margin="normal"
                   variant="outlined"
-                  value={values.lastname}
+                  value={userToEdit.lastname}
                   onChange={handleChange}
                 />
               </div>
@@ -115,7 +117,7 @@ const EditUserCard = () => {
                   label="Phone"
                   variant="outlined"
                   margin="normal"
-                  value={values.phone}
+                  value={userToEdit.phone}
                   onChange={handleChange}
                 />
               </div>
@@ -128,7 +130,7 @@ const EditUserCard = () => {
                   label="your@email.com"
                   fullWidth
                   variant="outlined"
-                  value={values.email}
+                  value={userToEdit.email}
                   onChange={handleChange}
                 />
               </div>
@@ -141,7 +143,7 @@ const EditUserCard = () => {
                   label="Company"
                   margin="normal"
                   variant="outlined"
-                  value={values.company}
+                  value={userToEdit.company}
                   onChange={handleChange}
                 />
               </div>
@@ -154,7 +156,7 @@ const EditUserCard = () => {
                   label="Your Job"
                   margin="normal"
                   variant="outlined"
-                  value={values.job}
+                  value={userToEdit.job}
                   onChange={handleChange}
                 />
               </div>
@@ -167,7 +169,7 @@ const EditUserCard = () => {
                   label="Street"
                   margin="normal"
                   variant="outlined"
-                  value={values.street}
+                  value={userToEdit.street}
                   onChange={handleChange}
                 />
               </div>
@@ -180,7 +182,7 @@ const EditUserCard = () => {
                   label="City"
                   variant="outlined"
                   margin="normal"
-                  value={values.city}
+                  value={userToEdit.city}
                   onChange={handleChange}
                 />
               </div>
@@ -193,7 +195,7 @@ const EditUserCard = () => {
                   label="ZIP"
                   variant="outlined"
                   margin="normal"
-                  value={values.zip}
+                  value={userToEdit.zip}
                   onChange={handleChange}
                 />
               </div>
@@ -206,7 +208,7 @@ const EditUserCard = () => {
                   label="State"
                   variant="outlined"
                   fullWidth
-                  value={values.state}
+                  value={userToEdit.state}
                   onChange={handleChange}
                 />
               </div>
@@ -219,7 +221,7 @@ const EditUserCard = () => {
                   label="Country"
                   variant="outlined"
                   fullWidth
-                  value={values.country}
+                  value={userToEdit.country}
                   onChange={handleChange}
                 />
               </div>
@@ -232,13 +234,13 @@ const EditUserCard = () => {
                   label="Website"
                   variant="outlined"
                   fullWidth
-                  value={values.website}
+                  value={userToEdit.website}
                   onChange={handleChange}
                 />
               </div>
             </Grid>
           </Grid>
-          <Button variant="contained" color="secondary">
+          <Button onclick={saveEdit} variant="contained" color="secondary">
             Save
           </Button>
         </Box>

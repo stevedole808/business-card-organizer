@@ -6,7 +6,7 @@ import Login from "./Components/Login";
 import Scanner from "./Components/Scanner";
 import EditUserCard from "./Components/EditUserCard";
 
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivateRoute from "./Components/PrivateRoute";
 import Dashboard from "./Components/Dashboard";
 import Card from "./Components/Card";

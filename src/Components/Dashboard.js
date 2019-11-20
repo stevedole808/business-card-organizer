@@ -64,9 +64,12 @@ const Dashboard = () => {
           }
         />
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-            <Form />
-          </Typography>
+          <Form />
+          <Typography
+            variant="body2"
+            color="textSecondary"
+            component="p"
+          ></Typography>
         </CardContent>
         <CardActions disableSpacing>
           <IconButton
