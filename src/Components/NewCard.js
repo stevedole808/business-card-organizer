@@ -2,6 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Grid, Box } from '@material-ui/core'
+import axios from 'axios'
+import AxiosWithAuth from '../Utils/AxiosWithAuth';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -49,14 +51,30 @@ const useStyles = makeStyles(theme => ({
 };
 
 const classes = useStyles();
+
+const onSubmit = event => {
+    event.preventDefault();
+
+    AxiosWithAuth
+      .post(
+        "api/card/",
+        values
+      )
+      .then(response => {
+        console.log(response, props);
+        // localStorage.setItem("token");
+        props.history.push("/cardlist");
+      })
+      .catch(error => console.log("Creating A Card Error", error.response));
+  };
     
     return (
-    <form>
+    <form onSubmit={onSubmit}>
       <div className={classes.root}>
         <Box border={1} borderRadius={6} width={500} p={2} className={classes.box}>
             <Grid container spacing={1} className={classes.root} >
                 <Grid item xs={6}>
-                    <div className={classes.paper}>
+                    <div className={classes.paper}>             
                         <TextField className={classes.TextField}
                           name="first_name"
                           label="First Name"

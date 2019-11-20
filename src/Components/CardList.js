@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
 import {BizCard} from './BizCard'
 import AxiosWithAuth from '../Utils/AxiosWithAuth'
 
@@ -7,7 +6,7 @@ const CardList = props => {
   const [cards, setCard] = useState([])
   useEffect(() => {
      AxiosWithAuth()
-        .get(`https://businesscardorganizer.herokuapp.com/api/cards/`)
+        .get(`api/cards/`)
         .then(response => {
             console.log(response.message)
             setCard(response.data)
@@ -15,7 +14,7 @@ const CardList = props => {
         .catch(error => {
             console.log(error)
         })
-})
+}, [])
 return(
     cards.map(card => {
         return(
