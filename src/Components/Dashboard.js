@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
@@ -18,28 +17,27 @@ import Fab from '@material-ui/core/Fab';
 import EditIcon from '@material-ui/icons/Edit';
 import Form from './NewCard'
 
-
 const useStyles = makeStyles(theme => ({
   card: {
-    width: 750
+    width: 750,
   },
   media: {
     height: 100
     // paddingTop: '56.25%', // 16:9
   },
   expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest
-    })
+    transform: 'rotate(0deg)',
+    marginLeft: 'auto',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shortest,
+    }),
   },
   expandOpen: {
-    transform: "rotate(180deg)"
+    transform: 'rotate(180deg)',
   },
   control: {
-    padding: theme.spacing(2)
-  }
+    padding: theme.spacing(2),
+  },
 }));
 
 const Dashboard = () => {
@@ -51,7 +49,6 @@ const Dashboard = () => {
   };
 
   return (
-
     <div className='container'>
         <Card className={classes.card}>
             <CardHeader
@@ -64,21 +61,25 @@ const Dashboard = () => {
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">
                     <Form/>
-
                 </Typography>
-              </CardContent>
-              <Button variant="contained" color="primary">
-                View Saved Cards
-              </Button>
-            </Card>
-          </Grid>
-          <Grid item xs={6} s={12}>
-            <Card className="card" boxShadow={3}>
-              <CardContent>
-                <Typography variant="body2" color="textPrimary" component="h5">
-                  Scan a QR code, or fill out the form to add a new card.
+            </CardContent>
+            <CardActions disableSpacing>
+                <IconButton
+                    className={clsx(classes.expand, {
+                        [classes.expandOpen]: expanded,
+                    })}
+                    onClick={handleExpandClick}
+                    aria-expanded={expanded}
+                    aria-label="show QR code"
+                >
+                    <ExpandMoreIcon />
+                </IconButton>
+            </CardActions>
+            <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <CardContent>
+                <Typography paragraph>
+                    QR code here!
                 </Typography>
-
                 <CardMedia
                     className={classes.media}
                     image="src/Images/wikipediaQR.svg"
@@ -120,9 +121,8 @@ const Dashboard = () => {
                 </Grid>
             </Grid>
         </div>
-
     </div>
   );
-};
+}
 
 export default Dashboard;
