@@ -11,7 +11,6 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import logo from '../Images/meishi1.jpg';
 
-
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1,
