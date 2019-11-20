@@ -53,7 +53,7 @@ const Register = props => {
       })
       .catch(error => console.log("Login Error", error.response));
   };
-
+  
   return (
     <>
       <Paper component="div" className={classes.root}>

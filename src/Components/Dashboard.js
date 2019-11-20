@@ -64,8 +64,8 @@ const Dashboard = () => {
           }
         />
         <CardContent>
+        <Form />
           <Typography variant="body2" color="textSecondary" component="p">
-            <Form />
           </Typography>
         </CardContent>
         <CardActions disableSpacing>

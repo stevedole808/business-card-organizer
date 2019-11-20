@@ -9,6 +9,7 @@ import PrivateRoute from "./Components/PrivateRoute";
 import Dashboard from "./Components/Dashboard";
 import {BizCard} from "./Components/BizCard"
 import CardList from "./Components/CardList"
+import EditUserCard from "./Components/EditUserCard"
 
 function App() {
   return (
