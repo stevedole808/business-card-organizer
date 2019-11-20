@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     height:'150',
   },
   box: {
-    margin: theme.spacing(4)
+    margin: theme.spacing(1)
   },
   TextField: {
     width:'100%',
@@ -47,12 +47,11 @@ const classes = useStyles();
 
   return (
     <form className={classes.form} >
-      <Box border={1} borderRadius={6} width={700} p={2} className={classes.box}>
+      <Box border={1} borderRadius={6} width={1080} p={2} className={classes.box}>
           <Grid  
-          container spacing={3}
+          container spacing={0}
           >
-            <Grid item xs={12} sm={6}>
-            <div>
+            <Grid item xs={6} sm={4}>
             <TextField className={classes.TextField}
               name="firstname"
               label="First Name"
@@ -61,10 +60,8 @@ const classes = useStyles();
               value={values.firstname}
               onChange={handleChange}
               />
-            </div>
             </Grid>
-          <Grid item xs={12} sm={6}>
-            <div>
+          <Grid item xs={6} sm={4}>
             <TextField className={classes.TextField}
               name="lastname"
               label="Last Name"
@@ -73,10 +70,8 @@ const classes = useStyles();
               value ={values.lastname}
               onChange={handleChange}
             />
-            </div>
-            </Grid>
-          <Grid item xs={12}>
-            <div>
+          </Grid>
+          <Grid item xs={3}>
             <TextField className={classes.TextField}
               name="mobile"
               label="Mobile"
@@ -85,10 +80,8 @@ const classes = useStyles();
               value ={values.mobile}
               onChange={handleChange}
             />
-            </div>
-            </Grid>
-          <Grid item xs={12} sm={6}>
-            <div>
+          </Grid>
+          <Grid item xs={3}>
             <TextField className={classes.TextField}
               name="phone"
               label="Phone"
@@ -97,10 +90,9 @@ const classes = useStyles();
               value ={values.phone}
               onChange={handleChange}
             />
-            </div>
+
             </Grid>
-          <Grid item xs={12} sm={6}>
-            <div>
+          <Grid item xs={3}>
             <TextField className={classes.TextField}
               name="fax"
               label="Fax"              
@@ -109,10 +101,9 @@ const classes = useStyles();
               value ={values.fax}
                                           
             />
-            </div>
+
             </Grid>
-          <Grid item xs={12}>
-            <div>
+          <Grid item xs={6}>
             <TextField className={classes.TextField}
               name="your@email.com"
               label="your@email.com"
@@ -121,10 +112,20 @@ const classes = useStyles();
               value ={values.email}
               onChange={handleChange}
               />
-            </div>
+
             </Grid>
-          <Grid item xs={12} sm={6}>
-            <div>
+            <Grid item xs={12}>
+                <TextField className={classes.TextField}
+                  name="job"
+                  label="Your Job"
+                  margin="normal"
+                  variant="outlined"
+                  value ={values.job}
+                  onChange={handleChange}
+                />
+
+            </Grid>
+          <Grid item xs={12}>
             <TextField className={classes.TextField}
               name="company"
               label="Company"
@@ -133,22 +134,10 @@ const classes = useStyles();
               value ={values.company}
               onChange={handleChange}
             />
-            </div>
+
             </Grid>
-          <Grid item xs={12} sm={6}>
-            <div>
-            <TextField className={classes.TextField}
-              name="job"
-              label="Your Job"
-              margin="normal"
-              variant="outlined"
-              value ={values.job}
-              onChange={handleChange}
-            />
-            </div>
-            </Grid>
-          <Grid item xs={12}>
-            <div>
+          
+          <Grid item xs={3}>
             <TextField className={classes.TextField}
             name="street"
             label="Street"
@@ -157,10 +146,9 @@ const classes = useStyles();
             value ={values.street}
             onChange={handleChange}
           />
-            </div>
+
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <div>
+          <Grid item xs={3}>
             <TextField className={classes.TextField}
               name="city"
               label="City"
@@ -169,10 +157,9 @@ const classes = useStyles();
               value ={values.city}
               onChange={handleChange}
             />
-            </div>
+
             </Grid>
           <Grid item xs={12} sm={6}>
-            <div>
             <TextField className={classes.TextField}
               name="zip"
               label="ZIP"
@@ -181,10 +168,9 @@ const classes = useStyles();
               value ={values.zip}
               onChange={handleChange}
             />
-            </div>
+
             </Grid>
           <Grid item xs={12}>
-            <div>
             <TextField className={classes.TextField}
               name="state"
               label="State"
@@ -193,10 +179,9 @@ const classes = useStyles();
               value ={values.state}
               onChange={handleChange}
             />
-            </div>
+
             </Grid>
           <Grid item xs={12}>
-            <div>
             <TextField className={classes.TextField}
               name="country"
               label="Country"
@@ -205,10 +190,9 @@ const classes = useStyles();
               value ={values.country}
               onChange={handleChange}
             />
-            </div>
+
             </Grid>
           <Grid item xs={12}>
-            <div>
             <TextField className={classes.TextField}
               name="website"
               label="Website"
@@ -217,7 +201,7 @@ const classes = useStyles();
               value ={values.website}
               onChange={handleChange}
             />
-            </div>
+
             </Grid>
           </Grid>
       </Box>
