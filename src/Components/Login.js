@@ -6,7 +6,6 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 
-
 import Register from "./Register";
 
 import axios from "axios";
@@ -44,6 +43,7 @@ const Login = props => {
   // On submit to POST user to api //
   const onSubmit = event => {
     event.preventDefault();
+    console.log(values);
     axios
 
       .post(
@@ -52,7 +52,8 @@ const Login = props => {
       )
 
       .then(response => {
-        localStorage.setItem("token", response.data.payload);
+        console.log(response.data);
+        localStorage.setItem("token", response.data.token);
         props.history.push("/protected");
       })
       .catch(error => console.log("Login Error", error.response));
