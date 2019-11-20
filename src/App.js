@@ -5,11 +5,11 @@ import Header from "./Components/Header";
 import Login from "./Components/Login";
 import Scanner from "./Components/Scanner"
 
-
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PrivateRoute from "./Components/PrivateRoute";
 import Dashboard from "./Components/Dashboard";
-
+import Card from "./Components/Card"
+import CardList from "./Components/CardList"
 
 function App() {
   return(
@@ -22,7 +22,6 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/scanner" component={Scanner} />
         </Switch>
-
       </div>
     </Router>
   )
