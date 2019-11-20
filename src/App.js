@@ -8,8 +8,7 @@ import Scanner from "./Components/Scanner"
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PrivateRoute from "./Components/PrivateRoute";
 import Dashboard from "./Components/Dashboard";
-import Card from "./Components/Card"
-import CardList from "./Components/CardList"
+import BizCard from "./Components/BizCard"
 
 function App() {
   return(
@@ -21,6 +20,7 @@ function App() {
           <Route exact path="/" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/scanner" component={Scanner} />
+          <Route path="/card" component={BizCard} />
         </Switch>
       </div>
     </Router>
