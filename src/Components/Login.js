@@ -41,7 +41,10 @@ const Login = props => {
   const onSubmit = event => {
     event.preventDefault();
     axios
-      .post("https://businesscardorganizer.herokuapp.com/api/auth/login", values)
+      .post(
+        "https://businesscardorganizer.herokuapp.com/api/auth/login",
+        values
+      )
       .then(response => {
         localStorage.setItem("token", response.data.payload);
         props.history.push("/protected");
@@ -84,13 +87,15 @@ const Login = props => {
               Log In
             </Button>
           </form>
-          <div className='register'>
-          <Typography variant='subtitle2' component='p'>Not signed up?</Typography>
-          <Link to='/'>
-            <Button color="primary" className={classes.button}>
+          <div className="register">
+            <Typography variant="subtitle2" component="p">
+              Not signed up?
+            </Typography>
+            <Link to="/">
+              <Button color="primary" className={classes.button}>
                 Register
-            </Button>
-          </Link>
+              </Button>
+            </Link>
           </div>
         </div>
       </Paper>
