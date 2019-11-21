@@ -28,9 +28,11 @@ const useStyles = makeStyles(theme => ({
 const CardList = props => { 
   const [cards, setCard] = useState([])
   const classes = useStyles();
+  const userId = localStorage.getItem('userId');
+
   useEffect(() => {
      AxiosWithAuth()
-        .get(`api/cards/`)
+        .get(`api/collection/${userId}`)
         .then(response => {
             console.log(response.data)
             setCard(response.data)

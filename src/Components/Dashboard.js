@@ -74,7 +74,7 @@ const Dashboard = () => {
           }
         />
         <CardContent>
-            {/* if user's card exists render <BizCard />, else render <EditUserCard /> */}
+            {/* if user's card exists render <BizCard id:{user_id} />, else render message and button to <EditUserCard /> */}
         </CardContent>
         <CardActions disableSpacing>
           <IconButton

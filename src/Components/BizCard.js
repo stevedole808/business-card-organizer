@@ -88,7 +88,7 @@ export const BizCard = (props) => {
                     <Typography variant="body1" color="textPrimary" component="p">
                         {`${props.website}`} 
                     </Typography>
-                    <QRCode value={props.qr} size={256} />
+                    <QRCode value={`${props.qr}`} size={384} renderAs='svg' />
                 </CardContent>
             </Collapse>
         </Card>
