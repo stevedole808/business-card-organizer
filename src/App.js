@@ -17,6 +17,10 @@ function App() {
     <Router>
       <div className="App">
         <Header />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 527f672a647e5aa03c27305eca5fc5b233da1b62
         <Switch>
           <PrivateRoute path="/protected" component={Dashboard} />
           <Route exact path="/" component={Register} />

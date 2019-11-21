@@ -160,6 +160,10 @@ const onSubmit = event => {
                       value ={values.job}
                       onChange={handleChange}
                     />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 527f672a647e5aa03c27305eca5fc5b233da1b62
                 </Grid>
                 <Grid  xs={12}>
                     <TextField className={classes.TextFields}
