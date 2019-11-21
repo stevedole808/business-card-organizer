@@ -1,6 +1,5 @@
 import React from "react";
-import { BrowserRouter as NavLink, withRouter } from "react-router-dom";
-
+import { BrowserRouter as NavLink, withRouter, Link } from "react-router-dom";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -62,6 +61,10 @@ const Header = props => {
     handleMobileMenuClose();
   };
 
+  const profile = e => {
+    props.history.push('/protected')
+  }
+
   const signOut = e => {
     localStorage.removeItem("token");
     props.history.push("/login");
@@ -75,7 +78,10 @@ const Header = props => {
   const renderNavLoggedIn = (
     <div>
       <NavLink to="/protected" className="nav-link">
-        <MenuItem onClick={handleMenuClose}>My Profile</MenuItem>
+        <MenuItem onClick={() => {
+          handleMenuClose();
+          profile();
+        }}>My Profile</MenuItem>
       </NavLink>
       <NavLink to="/" className="nav-link">
         <MenuItem
@@ -139,7 +145,9 @@ const Header = props => {
     <div className={`${classes.grow} header`}>
       <AppBar position="static">
         <Toolbar>
-          <img src={logo} alt="Meishi logo" />
+          <Link to='/protected'>
+            <img src={logo} alt="Meishi logo" />
+          </Link>
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>

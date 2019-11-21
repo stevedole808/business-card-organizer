@@ -1,24 +1,23 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import QrReader from 'react-qr-reader'
+import axios from 'axios'
+import Confirm from './Confirm'
  
 class Scanner extends Component {
   state = {
-    result: 'No result'
+    result: 'Please scan QR code'
   }
- 
+
   handleScan = data => {
     if (data) {
-        this.setState({
-            result: data
-        })
-        // return(
-        //     <Redirect
-        //         path={`/card/${data}`}
-        //         render={(props) => <BizCard {...props} userId={data}
-        //         />}
-        //     />
-        // )
+      this.setState({
+          result: data
+      });
     }
+    this.render(
+      <Confirm id={data} />
+    )
   }
 
   handleError = err => {
