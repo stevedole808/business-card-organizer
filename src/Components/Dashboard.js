@@ -75,7 +75,13 @@ const Dashboard = () => {
           }
         />
         <CardContent>
+<<<<<<< HEAD
             {/* if user's card exists render <BizCard />, else render <EditUserCard /> */}
+=======
+        <Form />
+          <Typography variant="body2" color="textSecondary" component="p">
+          </Typography>
+>>>>>>> 92a311bee766f31cd4079eae670d34cf2cd264ff
         </CardContent>
         <CardActions disableSpacing>
           <IconButton

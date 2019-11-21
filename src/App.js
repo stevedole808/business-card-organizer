@@ -9,8 +9,12 @@ import PrivateRoute from "./Components/PrivateRoute";
 import Dashboard from "./Components/Dashboard";
 import {BizCard} from "./Components/BizCard"
 import CardList from "./Components/CardList"
+<<<<<<< HEAD
 import EditUserCard from "./Components/EditUserCard";
 import Confirm from './Components/Confirm';
+=======
+import EditUserCard from "./Components/EditUserCard"
+>>>>>>> 92a311bee766f31cd4079eae670d34cf2cd264ff
 
 function App() {
   return (

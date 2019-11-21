@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
 import {BizCard} from './BizCard'
 import AxiosWithAuth from '../Utils/AxiosWithAuth'
 import { Grid } from '@material-ui/core'
@@ -27,6 +26,7 @@ const useStyles = makeStyles(theme => ({
   }));
 
 const CardList = props => { 
+<<<<<<< HEAD
     const classes = useStyles();    
     const [cards, setCard] = useState([])
     useEffect(() => {
@@ -40,6 +40,20 @@ const CardList = props => {
                 console.log(error)
             })
     },[])
+=======
+  const [cards, setCard] = useState([])
+  useEffect(() => {
+     AxiosWithAuth()
+        .get(`api/cards/`)
+        .then(response => {
+            console.log(response.message)
+            setCard(response.data)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+}, [])
+>>>>>>> 92a311bee766f31cd4079eae670d34cf2cd264ff
 return(
     <div className={`${classes.root}`}>
         <Grid
