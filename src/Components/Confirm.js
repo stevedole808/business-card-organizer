@@ -11,7 +11,7 @@ const Confirm = props => {
     
         AxiosWithAuth
             .post(
-                "api/card/",
+                "api/collection/",
                 props.id
             )
             .then(response => {
@@ -23,17 +23,17 @@ const Confirm = props => {
             })
     };
 
-    useEffect((props) => {
-         AxiosWithAuth()
-            .get(`api/cards/${props.id}`)
-            .then(response => {
-                console.log(response.data)
-                setCard(response.data)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }, [])
+    // useEffect((props) => {
+    //      AxiosWithAuth()
+    //         .get(`api/cards/${props.id}`)
+    //         .then(response => {
+    //             console.log(response.data)
+    //             setCard(response.data)
+    //         })
+    //         .catch(error => {
+    //             console.log(error)
+    //         })
+    // }, [])
     
     return(
         <>

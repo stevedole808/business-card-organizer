@@ -17,7 +17,6 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        
         <Switch>
           <PrivateRoute path="/protected" component={Dashboard} />
           <Route exact path="/" component={Register} />
