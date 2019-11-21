@@ -27,11 +27,12 @@ const useStyles = makeStyles(theme => ({
 
 const CardList = props => { 
   const [cards, setCard] = useState([])
+  const classes = useStyles();
   useEffect(() => {
      AxiosWithAuth()
         .get(`api/cards/`)
         .then(response => {
-            console.log(response.message)
+            console.log(response.data)
             setCard(response.data)
         })
         .catch(error => {
@@ -42,7 +43,7 @@ return(
     <div className={`${classes.root}`}>
         <Grid
         container
-        spacing={2}
+        spacing={0}
         direction="column-reverse"
         justify="space-evenly"
         alignItems="center"

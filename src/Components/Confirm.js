@@ -1,32 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@material-ui/core';
-import {BizCard} from './BizCard';
-import axios from 'axios';
+import { BizCard } from './BizCard';
 import AxiosWithAuth from '../Utils/AxiosWithAuth';
 
 const Confirm = props => {
-    const [info, setInfo] = useState()
+    const [card, setCard] = useState([])
     const handleAdd = () => {
         // push this card to user's saved card list
     }
 
-    useEffect(() => {
+    useEffect((props) => {
          AxiosWithAuth()
-            .get(`https://businesscardorganizer.herokuapp.com/api/cards/14`)
+            .get(`api/cards/${props.id}`)
             .then(response => {
                 console.log(response.data)
-                setInfo(response.data)
+                setCard(response.data)
             })
             .catch(error => {
                 console.log(error)
             })
     }, [])
-    
     return(
         <>
-            <BizCard
-                props={info}
+            <BizCard 
+                first_name={card.first_name}
+                last_name={card.last_name}
+                phone={card.phone}
+                email={card.email}
+                company={card.company}
+                job={card.job}
+                street={card.street}
+                city={card.city}
+                zip={card.zip}
+                state={card.state}
+                country={card.country}
+                website={card.website}
+                qr={card.qr_svg}
             />
+
             <div className='buttons'>
                 <Button variant='contained' color='primary' onClick={handleAdd}>Add</Button>
                 <Button color='secondary'>Cancel</Button>

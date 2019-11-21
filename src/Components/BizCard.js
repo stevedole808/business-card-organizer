@@ -87,11 +87,14 @@ export const BizCard = (props) => {
                 <Typography variant="body1" color="textSecondary" component="p">
                     {`${props.website}`} 
                 </Typography>
-                <CardMedia
-                    className={classes.media}
-                    image="src/Images/wikipediaQR.svg"
-                    title="QR code"
-                />
+                {props.qr}
+                {/* <svg
+                    width="50%"
+                    height="50%"
+                    viewBox="0 0 230 230"
+                >
+                    <path style={{fill:'rgb(0, 0, 0)'}} d={props.qr} />
+                </svg> */}
                 </CardContent>
             </Collapse>
         </Card>

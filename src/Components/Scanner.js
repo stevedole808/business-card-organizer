@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import QrReader from 'react-qr-reader'
-import axios from 'axios'
 import Confirm from './Confirm'
  
 class Scanner extends Component {
@@ -15,9 +14,6 @@ class Scanner extends Component {
           result: data
       });
     }
-    this.render(
-      <Confirm id={data} />
-    )
   }
 
   handleError = err => {
