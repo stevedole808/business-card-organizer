@@ -26,21 +26,6 @@ const useStyles = makeStyles(theme => ({
   }));
 
 const CardList = props => { 
-<<<<<<< HEAD
-    const classes = useStyles();    
-    const [cards, setCard] = useState([])
-    useEffect(() => {
-         AxiosWithAuth()
-            .get(`https://businesscardorganizer.herokuapp.com/api/cards/`)
-            .then(response => {
-                console.log(response.message)
-                setCard(response.data)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    },[])
-=======
   const [cards, setCard] = useState([])
   useEffect(() => {
      AxiosWithAuth()
@@ -53,7 +38,6 @@ const CardList = props => {
             console.log(error)
         })
 }, [])
->>>>>>> 92a311bee766f31cd4079eae670d34cf2cd264ff
 return(
     <div className={`${classes.root}`}>
         <Grid
