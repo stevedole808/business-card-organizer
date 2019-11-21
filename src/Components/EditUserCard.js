@@ -42,32 +42,25 @@ const initialUser = {
   website: ""
 };
 
-const EditUserCard = card => {
+const EditUserCard = props => {
   const [editing, setEditing] = useState(false);
   const [userToEdit, setUserToEdit] = useState(initialUser);
 
-  const editUser = user => {
-    setEditing(true);
-    setUserToEdit(userInfo);
-  };
+  //   const editUser = user => {
+  //   setEditing(true);
+  //     setUserToEdit(user);
+  //   };
 
   const saveEdit = e => {
     e.preventDefault();
     AxiosWithAuth()
-      .put(`api/cards/${userToEdit.id}`, userToEdit)
+      .put(`api/cards/${props.match.params.id}`, userToEdit)
       .then(response => {
-        const newUser = userInfo.map(userInfo => {
-          if (userToEdit.id === card.id) {
-            return response.data;
-          } else {
-            return userInfo;
-          }
-        });
+        console.log(response.data);
       });
-    updateUse(newUser);
   };
   const handleChange = event => {
-    setValues({ ...values, [event.target.name]: event.target.value });
+    // setValues({ ...values, [event.target.name]: event.target.value });
   };
 
   const classes = useStyles();
@@ -240,7 +233,7 @@ const EditUserCard = card => {
               </div>
             </Grid>
           </Grid>
-          <Button onclick={saveEdit} variant="contained" color="secondary">
+          <Button onClick={saveEdit} variant="contained" color="secondary">
             Save
           </Button>
         </Box>
