@@ -110,7 +110,7 @@ const Dashboard = () => {
                   View your saved business cards
                 </Typography>
               </CardContent>
-              <Link to='/cardlist' className='btn'>
+              <Link to='/collection' className='btn'>
                     <Button variant="contained" color="primary">
                     View Saved Cards
                     </Button>
