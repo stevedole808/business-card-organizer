@@ -9,7 +9,7 @@ const Confirm = props => {
     const handleAdd = e => {
         e.preventDefault();
     
-        AxiosWithAuth
+        AxiosWithAuth()
             .post(
                 "api/collection/",
                 props.id
@@ -23,17 +23,18 @@ const Confirm = props => {
             })
     };
 
-    // useEffect((props) => {
-    //      AxiosWithAuth()
-    //         .get(`api/cards/${props.id}`)
-    //         .then(response => {
-    //             console.log(response.data)
-    //             setCard(response.data)
-    //         })
-    //         .catch(error => {
-    //             console.log(error)
-    //         })
-    // }, [])
+    useEffect(() => {
+        console.log('confirm props',props)
+         AxiosWithAuth()
+            .get(`api/cards/${props.history.location.state.id}`)
+            .then(response => {
+                console.log(response)
+                setCard(response.data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }, [])
     
     return(
         <>

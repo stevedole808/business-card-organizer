@@ -5,6 +5,7 @@ import { Grid, Box } from '@material-ui/core'
 import AxiosWithAuth from '../Utils/AxiosWithAuth';
 import {Button} from '@material-ui/core'
 import * as Yup from 'yup';
+import { Link } from 'react-router-dom'
 import {
     Formik
   } from 'formik';
@@ -133,7 +134,7 @@ const onSubmit = event => {
                 </Grid>
                <Grid  xs={12}>
                     <TextField className={classes.TextFields}
-                      name="your@email.com"
+                      name="email"
                       label="your@email.com"
                       variant="outlined"
                       margin="normal"
@@ -160,10 +161,6 @@ const onSubmit = event => {
                       value ={values.job}
                       onChange={handleChange}
                     />
-<<<<<<< HEAD
-=======
-
->>>>>>> 527f672a647e5aa03c27305eca5fc5b233da1b62
                 </Grid>
                 <Grid  xs={12}>
                     <TextField className={classes.TextFields}
@@ -228,9 +225,11 @@ const onSubmit = event => {
             </Grid>
         </Box>
       </div>
-    <Button variant="contained" color="secondary">
+      <Link to='/confirm'>
+       <Button type='submit' variant="contained" color="secondary">
             Submit!
         </Button>
+      </Link>
       </form>
       </Formik>
     );

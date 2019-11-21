@@ -11,25 +11,23 @@ import {BizCard} from "./Components/BizCard"
 import CardList from "./Components/CardList"
 import EditUserCard from "./Components/EditUserCard";
 import Confirm from './Components/Confirm';
+import Form from './Components/NewCard'
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Header />
-<<<<<<< HEAD
-=======
-
->>>>>>> 527f672a647e5aa03c27305eca5fc5b233da1b62
         <Switch>
           <PrivateRoute path="/protected" component={Dashboard} />
           <Route exact path="/" component={Register} />
           <Route path="/login" component={Login} />
-          <Route path="/scanner" component={Scanner} />
+          <Route path="/scanner" render={props => <Scanner {...props} />} />
           <Route path="/bizcard" component={BizCard} />
           <Route path='/CardList' component={CardList} />
           <Route path='/editusercard' component={EditUserCard} />
-          <Route path='/confirm' component={Confirm} />
+          <Route path='/confirm' render={props => <Confirm {...props} />} />
+          <Route path='/newcard' component={Form} />
         </Switch>
       </div>
     </Router>
