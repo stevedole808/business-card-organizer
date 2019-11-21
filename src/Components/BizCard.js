@@ -6,6 +6,7 @@ import IconButton from '@material-ui/core/IconButton'
 import EditIcon from '@material-ui/icons/Edit'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { makeStyles } from '@material-ui/core/styles';
+import QRCode from 'qrcode.react';
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -81,20 +82,13 @@ export const BizCard = (props) => {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    {`${props.street} ${props.city}, ${props.state} ${props.zip} ${props.country}`} 
-                </Typography>
-                <Typography variant="body1" color="textSecondary" component="p">
-                    {`${props.website}`} 
-                </Typography>
-                {props.qr}
-                {/* <svg
-                    width="50%"
-                    height="50%"
-                    viewBox="0 0 230 230"
-                >
-                    <path style={{fill:'rgb(0, 0, 0)'}} d={props.qr} />
-                </svg> */}
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        {`${props.street} ${props.city}, ${props.state} ${props.zip} ${props.country}`} 
+                    </Typography>
+                    <Typography variant="body1" color="textSecondary" component="p">
+                        {`${props.website}`} 
+                    </Typography>
+                    <QRCode value={props.id} />
                 </CardContent>
             </Collapse>
         </Card>

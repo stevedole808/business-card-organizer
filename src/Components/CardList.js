@@ -51,7 +51,8 @@ return(
         {cards.map(card => {
             return(
                 <Grid xs={6} s={10}>
-                    <BizCard 
+                    <BizCard
+                        key={card.id}
                         first_name={card.first_name}
                         last_name={card.last_name}
                         phone={card.phone}
@@ -64,6 +65,7 @@ return(
                         state={card.state}
                         country={card.country}
                         website={card.website}
+                        id={card.id}
                     />
                 </Grid>
             )
