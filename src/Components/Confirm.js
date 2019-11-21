@@ -5,9 +5,23 @@ import AxiosWithAuth from '../Utils/AxiosWithAuth';
 
 const Confirm = props => {
     const [card, setCard] = useState([])
-    const handleAdd = () => {
-        // push this card to user's saved card list
-    }
+    
+    const handleAdd = e => {
+        e.preventDefault();
+    
+        AxiosWithAuth
+            .post(
+                "api/card/",
+                props.id
+            )
+            .then(response => {
+                console.log(response, props);
+                props.history.push("/cardlist");
+            })
+            .catch(error => {
+                console.log("Problem creating card: ", error)
+            })
+    };
 
     useEffect((props) => {
          AxiosWithAuth()
@@ -20,6 +34,7 @@ const Confirm = props => {
                 console.log(error)
             })
     }, [])
+    
     return(
         <>
             <BizCard 
