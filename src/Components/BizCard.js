@@ -13,6 +13,7 @@ import {
 import clsx from "clsx";
 import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -50,16 +51,28 @@ export const BizCard = props => {
     <Card className={classes.card}>
       <CardHeader
         action={
-          <NavLink to={`/editusercard/${props.id}`}>
-            <Fab
+          <div>
+            <NavLink to={`/editusercard/${props.id}`}>
+              <Fab
+                size="small"
+                color="secondary"
+                aria-label="edit"
+                className={classes.fab}
+              >
+                <EditIcon />
+              </Fab>
+            </NavLink>
+
+            <IconButton
               size="small"
-              color="secondary"
-              aria-label="edit"
+              color="primary"
+              aria-label="delete"
               className={classes.fab}
+              //   onClick={deleteCard}
             >
-              <EditIcon />
-            </Fab>
-          </NavLink>
+              <DeleteIcon />
+            </IconButton>
+          </div>
         }
       />
       <CardContent>

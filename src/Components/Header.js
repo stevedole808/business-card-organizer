@@ -63,7 +63,7 @@ const Header = props => {
   };
 
   const signOut = e => {
-    localStorage.removeItem("token");
+    localStorage.clear();
     props.history.push("/login");
   };
 

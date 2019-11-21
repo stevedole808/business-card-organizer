@@ -5,7 +5,8 @@ const AxiosWithAuth = () => {
   return axios.create({
     baseURL: "https://businesscardorganizer.herokuapp.com/",
     headers: {
-      Authorization: token
+      Authorization: token,
+      "Access-Control-Allow-Origin": "*"
     }
   });
 };

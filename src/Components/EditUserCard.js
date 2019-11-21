@@ -28,18 +28,18 @@ const theme = {
 };
 
 const initialUser = {
-  first_name: "",
-  last_name: "",
-  phone: "",
-  email: "",
-  company: "",
-  job: "",
-  street: "",
-  city: "",
-  zip: "",
-  state: "",
-  country: "",
-  website: ""
+  first_name: null,
+  last_name: null,
+  phone: null,
+  email: null,
+  company: null,
+  job: null,
+  street: null,
+  city: null,
+  zip: null,
+  state: null,
+  country: null,
+  website: null
 };
 
 const EditUserCard = props => {
@@ -53,6 +53,12 @@ const EditUserCard = props => {
 
   const saveEdit = e => {
     e.preventDefault();
+    Object.keys(userToEdit).forEach(property => {
+      if (!userToEdit[property]) {
+        delete userToEdit[property];
+      }
+    });
+    console.log(userToEdit);
     AxiosWithAuth()
       .put(`api/cards/${props.match.params.id}`, userToEdit)
       .then(response => {
@@ -60,7 +66,7 @@ const EditUserCard = props => {
       });
   };
   const handleChange = event => {
-    // setValues({ ...values, [event.target.name]: event.target.value });
+    setUserToEdit({ ...userToEdit, [event.target.name]: event.target.value });
   };
 
   const classes = useStyles();
@@ -119,7 +125,7 @@ const EditUserCard = props => {
               <div className={classes.paper}>
                 <TextField
                   className={classes.TextField}
-                  name="your@email.com"
+                  name="email"
                   label="your@email.com"
                   fullWidth
                   variant="outlined"
