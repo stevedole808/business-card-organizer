@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import PrivateRoute from "./Components/PrivateRoute";
 import Dashboard from "./Components/Dashboard";
 import {BizCard} from "./Components/BizCard"
-import CardList from "./Components/CardCollection"
+import CardCollection from "./Components/CardCollection"
 import EditUserCard from "./Components/EditUserCard";
 import Confirm from './Components/Confirm';
 import Form from './Components/NewCard'
