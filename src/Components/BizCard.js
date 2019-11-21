@@ -1,14 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {Card, CardHeader, Typography, Fab,CardActions, Collapse, CardMedia, CardContent} from '@material-ui/core'
 import clsx from 'clsx'
 import IconButton from '@material-ui/core/IconButton'
 import EditIcon from '@material-ui/icons/Edit'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import { makeStyles } from '@material-ui/core/styles';
+import QRCode from 'qrcode.react';
 
 const useStyles = makeStyles(theme => ({
     card: {
       width: 750,
+      marginTop: 50
     },
     media: {
       height: 100
@@ -37,22 +40,31 @@ export const BizCard = (props) => {
     };
     
     return (
+    <div className='container'>
         <Card className={classes.card}>
             <CardHeader
                 action={
-                    <Fab size='small' color="secondary" aria-label="edit" className={classes.fab}>
+                    <Link to='/editusercard'>
+                        <Fab
+                        size="small"
+                        color="secondary"
+                        aria-label="edit"
+                        className={classes.fab}
+                        type='button'
+                        >
                         <EditIcon />
-                    </Fab>
-                }
+                        </Fab>
+                    </Link>
+                }   
             />
             <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="h3" color="textPrimary" component="p">
                     {`${props.first_name} ${props.last_name}`} 
                 </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="subtitle1" color="textPrimary" component="p">
                     {`${props.phone} ${props.email}`} 
                 </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="h5" color="textSecondary" component="p">
                     {`${props.job} ${props.company}`} 
                 </Typography>
             </CardContent>
@@ -70,23 +82,17 @@ export const BizCard = (props) => {
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                <Typography paragraph>
-                    rest of info in typography tags
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    {`${props.street} ${props.city}, ${props.state} ${props.zip} ${props.country}`} 
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                    {`${props.website}`} 
-                </Typography>
-                <CardMedia
-                    className={classes.media}
-                    image="src/Images/wikipediaQR.svg"
-                    title="QR code"
-                />
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        {`${props.street} ${props.city}, ${props.state} ${props.zip} ${props.country}`} 
+                    </Typography>
+                    <Typography variant="body1" color="textPrimary" component="p">
+                        {`${props.website}`} 
+                    </Typography>
+                    <QRCode value={props.qr} size={256} />
                 </CardContent>
             </Collapse>
         </Card>
+    </div>
     );
 }
 

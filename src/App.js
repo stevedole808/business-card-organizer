@@ -9,20 +9,24 @@ import PrivateRoute from "./Components/PrivateRoute";
 import Dashboard from "./Components/Dashboard";
 import {BizCard} from "./Components/BizCard"
 import CardList from "./Components/CardList"
-import EditUserCard from "./Components/EditUserCard"
+import EditUserCard from "./Components/EditUserCard";
+import Confirm from './Components/Confirm';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Header />
+
         <Switch>
           <PrivateRoute path="/protected" component={Dashboard} />
           <Route exact path="/" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/scanner" component={Scanner} />
           <Route path="/bizcard" component={BizCard} />
-          <Route path="/cardlist" component={CardList} />
+          <Route path='/CardList' component={CardList} />
+          <Route path='/editusercard' component={EditUserCard} />
+          <Route path='/confirm' component={Confirm} />
         </Switch>
       </div>
     </Router>

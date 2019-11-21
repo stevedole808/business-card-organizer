@@ -94,6 +94,7 @@ const onSubmit = event => {
   >
     <form onSubmit={onSubmit}>
       <div className={classes.root}>
+
         <Box 
         border={1} 
         borderRadius={6} 
@@ -160,6 +161,7 @@ const onSubmit = event => {
                       value ={values.job}
                       onChange={handleChange}
                     />
+
                 </Grid>
                 <Grid  xs={12}>
                     <TextField className={classes.TextFields}

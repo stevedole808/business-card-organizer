@@ -1,43 +1,31 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 import QrReader from 'react-qr-reader'
- 
-class Scanner extends Component {
-  state = {
-    result: 'No result'
-  }
- 
-  handleScan = data => {
-    if (data) {
-        this.setState({
-            result: data
-        })
-        // return(
-        //     <Redirect
-        //         path={`/card/${data}`}
-        //         render={(props) => <BizCard {...props} userId={data}
-        //         />}
-        //     />
-        // )
-    }
+import Confirm from './Confirm'
+
+const Scanner = (props) => {
+  const [result, setResult] = useState([]);
+
+  const handleScan = data => {
+    setResult(data)
   }
 
-  handleError = err => {
-    console.error(err)
+  const handleError = err => {
+    console.log('There was a scan error' + err)
   }
 
-  render() {
-    return (
-      <div className='scanner'>
-        <QrReader
-          delay={300}
-          onError={this.handleError}
-          onScan={this.handleScan}
-          style={{ width: '100%' }}
-        />
-        <p>{this.state.result}</p>
-      </div>
-    )
-  }
+  return(
+    <div className='scanner'>
+      <QrReader
+        delay={300}
+        onError={handleError}
+        onScan={handleScan}
+        style={{ width: '100%' }}
+      />
+      <p>Please scan QR code</p>
+      <p>{result}</p>
+    </div>
+  )
 }
 
 export default Scanner;
