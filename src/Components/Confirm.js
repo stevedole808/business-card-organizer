@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button } from '@material-ui/core';
+import { Button, Typography } from '@material-ui/core';
 import { BizCard } from './BizCard';
 import AxiosWithAuth from '../Utils/AxiosWithAuth';
 
@@ -50,8 +50,11 @@ const Confirm = props => {
                 state={card.state}
                 country={card.country}
                 website={card.website}
-                qr={card.qr_svg}
+                qr={card.id}
             />
+            <Typography variant="body2" color="textPrimary" component="h5">
+                  Save this card to your collection?
+            </Typography>
 
             <div className='buttons'>
                 <Button variant='contained' color='primary' onClick={handleAdd}>Add</Button>

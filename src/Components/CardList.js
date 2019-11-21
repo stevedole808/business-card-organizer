@@ -65,7 +65,7 @@ return(
                         state={card.state}
                         country={card.country}
                         website={card.website}
-                        id={card.id}
+                        qr={card.id}
                     />
                 </Grid>
             )
