@@ -50,6 +50,7 @@ const Login = props => {
       .then(response => {
         console.log(response.data);
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("userId", response.data.id);
         props.history.push("/protected");
       })
       .catch(error => console.log("Login Error", error.response));

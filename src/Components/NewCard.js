@@ -39,18 +39,18 @@ const useStyles = makeStyles(theme => ({
 
   const Form = props =>  {
   const [values, setValues] = React.useState({
-    first_name: '',
-    last_name: '',
-    phone: '',
-    email: '',
-    company: '',
-    job: '',
-    street: '',
-    city: '',
-    zip: '',
-    state: '',
-    country: '', 
-    website: '',
+    first_name: null,
+    last_name: null,
+    phone: null,
+    email: null,
+    company: null,
+    job: null,
+    street: null,
+    city: null,
+    zip: null,
+    state: null,
+    country: null, 
+    website: null,
   });
   
 const handleChange = event => {
@@ -62,6 +62,11 @@ const classes = useStyles();
 const onSubmit = event => {
     event.preventDefault();
 
+    Object.keys(values).forEach(property => {
+        if (!values[property]) {
+          delete values[property];
+        }
+      });
     AxiosWithAuth
       .post(
         "api/card/",
@@ -74,6 +79,7 @@ const onSubmit = event => {
       })
       .catch(error => console.log("Creating A Card Error", error.response));
   };
+
     return (
 
     <Formik
@@ -134,7 +140,7 @@ const onSubmit = event => {
                 </Grid>
                <Grid  xs={12}>
                     <TextField className={classes.TextFields}
-                      name="your@email.com"
+                      name="email"
                       label="your@email.com"
                       variant="outlined"
                       margin="normal"
@@ -235,3 +241,4 @@ const onSubmit = event => {
   }
 
   export default Form
+  
