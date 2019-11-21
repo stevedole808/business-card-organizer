@@ -58,10 +58,10 @@ export const BizCard = (props) => {
                 }   
             />
             <CardContent>
-                <Typography variant="h3" color="textSecondary" component="p">
+                <Typography variant="h3" color="textPrimary" component="p">
                     {`${props.first_name} ${props.last_name}`} 
                 </Typography>
-                <Typography variant="subtitle1" color="textSecondary" component="p">
+                <Typography variant="subtitle1" color="textPrimary" component="p">
                     {`${props.phone} ${props.email}`} 
                 </Typography>
                 <Typography variant="h5" color="textSecondary" component="p">
@@ -85,10 +85,10 @@ export const BizCard = (props) => {
                     <Typography variant="body2" color="textSecondary" component="p">
                         {`${props.street} ${props.city}, ${props.state} ${props.zip} ${props.country}`} 
                     </Typography>
-                    <Typography variant="body1" color="textSecondary" component="p">
+                    <Typography variant="body1" color="textPrimary" component="p">
                         {`${props.website}`} 
                     </Typography>
-                    <QRCode value={props.id} />
+                    <QRCode value={props.id} size={256} />
                 </CardContent>
             </Collapse>
         </Card>

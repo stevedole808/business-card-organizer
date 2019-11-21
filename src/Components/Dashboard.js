@@ -92,11 +92,6 @@ const Dashboard = () => {
         <Collapse in={expanded} timeout="auto" unmountOnExit>
           <CardContent>
             <Typography paragraph>QR code here!</Typography>
-            <CardMedia
-              className={classes.media}
-              image="src/Images/wikipediaQR.svg"
-              title="Wikipedia QR code"
-            />
           </CardContent>
         </Collapse>
       </Card>
