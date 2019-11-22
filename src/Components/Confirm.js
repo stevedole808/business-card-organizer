@@ -82,7 +82,7 @@ const Confirm = props => {
             )
             .then(response => {
                 console.log(response, props);
-                props.history.push("/cardlist");
+                props.history.push("/collection");
             })
             .catch(error => {
                 console.log("Problem creating card: ", error)
