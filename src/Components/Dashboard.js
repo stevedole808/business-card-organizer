@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import CardList from "./CardList";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import { LinearProgress } from "@material-ui/core";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -16,6 +18,8 @@ import Button from "@material-ui/core/Button";
 import Fab from "@material-ui/core/Fab";
 import EditIcon from "@material-ui/icons/Edit";
 import Form from "./NewCard";
+import { BizCard } from "./BizCard";
+import AxiosWithAuth from "../Utils/AxiosWithAuth";
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -43,58 +47,25 @@ const useStyles = makeStyles(theme => ({
 const Dashboard = () => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-
+  const [isLoading, setIsLoading] = useState(true);
+  const userId = localStorage.getItem("userId");
+  const [cards, setCards] = useState([]);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
+  useEffect(() => {
+    AxiosWithAuth()
+      .get(`api/cards/user/${userId}`)
+      .then(response => {
+        console.log("get res data", response.data);
+        setCards(response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
   return (
     <div className="container">
-      <Card className={classes.card}>
-        <CardHeader
-          action={
-            <Fab
-              size="small"
-              color="secondary"
-              aria-label="edit"
-              className={classes.fab}
-            >
-              <EditIcon />
-            </Fab>
-          }
-        />
-        <CardContent>
-          <Form />
-          <Typography
-            variant="body2"
-            color="textSecondary"
-            component="p"
-          ></Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          <IconButton
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expanded
-            })}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show QR code"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
-        </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography paragraph>QR code here!</Typography>
-            <CardMedia
-              className={classes.media}
-              image="src/Images/wikipediaQR.svg"
-              title="Wikipedia QR code"
-            />
-          </CardContent>
-        </Collapse>
-      </Card>
-
       <div className={classes.root}>
         <Grid
           container
@@ -131,6 +102,7 @@ const Dashboard = () => {
           </Grid>
         </Grid>
       </div>
+      <CardList cards={cards} setCards={setCards} />
     </div>
   );
 };

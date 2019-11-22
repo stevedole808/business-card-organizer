@@ -10,6 +10,7 @@ import Dashboard from "./Components/Dashboard";
 import { BizCard } from "./Components/BizCard";
 import CardList from "./Components/CardList";
 import EditUserCard from "./Components/EditUserCard";
+import AddNewCard from "./Components/AddNewCard";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -23,15 +24,17 @@ function App() {
           <Route exact path="/" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/scanner" component={Scanner} />
-          <Route path="/bizcard" component={BizCard} />
-          <Route
-            path="/cardlist"
-            render={props => <CardList setCards={setCards} cards={cards} />}
-          />
+          <Route path="/cardlist" component={CardList} />
           <Route
             path="/editusercard/:id"
             render={props => (
               <EditUserCard {...props} setCards={setCards} cards={cards} />
+            )}
+          />
+          <Route
+            path="/addnewcard/:id"
+            render={props => (
+              <AddNewCard {...props} setCards={setCards} cards={cards} />
             )}
           />
         </Switch>

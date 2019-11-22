@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { BizCard } from "./BizCard";
 import AxiosWithAuth from "../Utils/AxiosWithAuth";
 import { LinearProgress } from "@material-ui/core";
+
 const CardList = props => {
   const [isLoading, setIsLoading] = useState(true);
-  const userId = localStorage.getItem("userId");
 
+  const userId = localStorage.getItem("userId");
+  console.log("what is this??", props);
   useEffect(() => {
     AxiosWithAuth()
       .get(`api/cards/user/${userId}`)
@@ -43,7 +45,9 @@ const CardList = props => {
               />
             ))
           ) : (
-            <h1> Add Card </h1>
+            <Link to={`/addnewcard/${userId}`}>
+              <h1> Add Card </h1>
+            </Link>
           )}
         </>
       )}

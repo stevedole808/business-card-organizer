@@ -47,6 +47,8 @@ export const BizCard = props => {
     setExpanded(!expanded);
   };
 
+  const deleteCard = props => {};
+
   return (
     <Card className={classes.card}>
       <CardHeader

@@ -39,10 +39,11 @@ const initialUser = {
   zip: null,
   state: null,
   country: null,
-  website: null
+  website: null,
+  user_id: Number(localStorage.getItem("userId"))
 };
-
-const EditUserCard = props => {
+console.log(typeof localStorage.getItem("userId"));
+const AddNewCard = props => {
   const [editing, setEditing] = useState(false);
   const [userToEdit, setUserToEdit] = useState(initialUser);
 
@@ -60,9 +61,9 @@ const EditUserCard = props => {
     });
     console.log(userToEdit);
     AxiosWithAuth()
-      .put(`api/cards/${props.match.params.id}`, userToEdit)
+      .post(`api/cards/`, userToEdit)
       .then(response => {
-        console.log("put res data", response.data);
+        console.log("post res data", response.data);
         props.history.push("/protected");
       });
   };
@@ -248,4 +249,4 @@ const EditUserCard = props => {
     </form>
   );
 };
-export default EditUserCard;
+export default AddNewCard;
