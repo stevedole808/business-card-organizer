@@ -4,27 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Grid, Box, Button } from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
-  },
-  box: {
-    margin: theme.spacing(2)
-  },
-  TextField: {
-    width: "100%",
-    height: "100%"
-  },
-  paper: {
-    textAlign: "center",
-    padding: theme.spacing(0),
-    textAlign: "center",
-    color: theme.palette.text.secondary
-  }
-}));
-
-const theme = {
-  spacing: value => value ** 2
+const color = {
+  backgroundColor: "#909090"
 };
 
 const initialUser = {
@@ -45,7 +26,7 @@ const initialUser = {
 const EditUserCard = props => {
   const [editing, setEditing] = useState(false);
   const [userToEdit, setUserToEdit] = useState(initialUser);
-
+  const useStyles = makeStyles();
   //   const editUser = user => {
   //   setEditing(true);
   //     setUserToEdit(user);

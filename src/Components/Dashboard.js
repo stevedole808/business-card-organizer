@@ -6,7 +6,6 @@ import { LinearProgress } from "@material-ui/core";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
@@ -44,6 +43,15 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+// const renderNewCard = () => {
+//     <>
+//     <Typography variant="body2" color="textSecondary" component="p">
+//         Please create your business card here:
+//     </Typography>
+//     <Form />
+//     </>
+// }
+
 const Dashboard = () => {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
@@ -78,24 +86,26 @@ const Dashboard = () => {
             <Card className="card">
               <CardContent>
                 <Typography variant="body2" color="textPrimary" component="h5">
-                  View your saved business cards
+                  View your card collection.
                 </Typography>
               </CardContent>
-              <Button variant="contained" color="primary">
-                View Saved Cards
-              </Button>
+              <Link to="/collection" className="btn">
+                <Button variant="contained" color="primary">
+                  View Collection
+                </Button>
+              </Link>
             </Card>
           </Grid>
           <Grid item xs={6} s={12}>
             <Card className="card">
               <CardContent>
                 <Typography variant="body2" color="textPrimary" component="h5">
-                  Scan a QR code, or fill out the form to add a new card.
+                  Scan a QR code to add a card to your collection.
                 </Typography>
               </CardContent>
-              <Link to="/scanner">
+              <Link to="/scanner" className="btn">
                 <Button variant="contained" color="secondary">
-                  Add New Card
+                  Scan Card
                 </Button>
               </Link>
             </Card>

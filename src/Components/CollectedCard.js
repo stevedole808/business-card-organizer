@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
   Card,
@@ -8,7 +8,9 @@ import {
   CardActions,
   Collapse,
   CardMedia,
-  CardContent
+  CardContent,
+  TextField,
+  Button
 } from "@material-ui/core";
 import clsx from "clsx";
 import IconButton from "@material-ui/core/IconButton";
@@ -43,17 +45,24 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const BizCard = props => {
+export const CollectedCard = props => {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const [editing, setEditing] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const [event, setEvent] = useState(props.event);
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+  const handleChange = event => {
+    setEvent(event.target.value);
+  };
+
+  console.log("props in collected card", props);
   const deleteCard = e => {
     e.preventDefault();
     AxiosWithAuth()
-      .delete(`api/cards/${props.id}`)
+      .delete(`api/collection/${props.qr}`)
       .then(() => {
         window.location.reload();
       })
@@ -61,22 +70,35 @@ export const BizCard = props => {
         console.log(error);
       });
   };
-
+  const addEvent = e => {
+    e.preventDefault();
+    AxiosWithAuth()
+      .put(`api/collection/${props.qr}`, { event })
+      .then(() => {
+        window.location.reload();
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  };
   return (
     <Card className={classes.card}>
       <CardHeader
         action={
           <div>
-            <NavLink to={`/editusercard/${props.id}`}>
-              <Fab
-                size="small"
-                color="secondary"
-                aria-label="edit"
-                className={classes.fab}
-              >
-                <EditIcon />
-              </Fab>
-            </NavLink>
+            <Fab
+              type="button"
+              size="small"
+              color="secondary"
+              aria-label="edit"
+              className={classes.fab}
+              onClick={e => {
+                e.preventDefault();
+                setEditing(true);
+              }}
+            >
+              <EditIcon />
+            </Fab>
 
             <IconButton
               size="small"
@@ -91,15 +113,28 @@ export const BizCard = props => {
         }
       />
       <CardContent>
-        <Typography variant="h3" color="textPrimary" component="p">
+        <Typography variant="body2" color="textSecondary" component="p">
           {`${props.first_name} ${props.last_name}`}
         </Typography>
-        <Typography variant="subtitle1" color="textPrimary" component="p">
+        <Typography variant="body2" color="textSecondary" component="p">
           {`${props.phone} ${props.email}`}
         </Typography>
-        <Typography variant="h5" color="textSecondary" component="p">
+        <Typography variant="body2" color="textSecondary" component="p">
           {`${props.job} ${props.company}`}
         </Typography>
+        {editing ? (
+          <>
+            <TextField
+              onChange={handleChange}
+              name="event"
+              label="event"
+              value={event}
+            />
+            <Button onClick={addEvent}>Save</Button>
+          </>
+        ) : (
+          <h4>Event: {props.event}</h4>
+        )}
       </CardContent>
       <CardActions disableSpacing>
         <IconButton
@@ -115,13 +150,18 @@ export const BizCard = props => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
+          <Typography paragraph>rest of info in typography tags</Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {`${props.street} ${props.city}, ${props.state} ${props.zip} ${props.country}`}
           </Typography>
-          <Typography variant="body1" color="textPrimary" component="p">
+          <Typography variant="body2" color="textSecondary" component="p">
             {`${props.website}`}
           </Typography>
-          <QRCode value={`${props.qr}`} size={384} renderAs="svg" />
+          <CardMedia
+            className={classes.media}
+            image="src/Images/wikipediaQR.svg"
+            title="QR code"
+          />
         </CardContent>
       </Collapse>
     </Card>

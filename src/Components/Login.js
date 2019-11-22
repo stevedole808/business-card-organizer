@@ -5,9 +5,6 @@ import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
-
-import Register from "./Register";
-
 import axios from "axios";
 
 const Login = props => {
@@ -45,7 +42,6 @@ const Login = props => {
     event.preventDefault();
     console.log(values);
     axios
-
       .post(
         "https://businesscardorganizer.herokuapp.com/api/auth/login",
         values
@@ -55,7 +51,6 @@ const Login = props => {
         console.log(response.data);
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("userId", response.data.id);
-
         props.history.push("/protected");
       })
       .catch(error => console.log("Login Error", error.response));
@@ -75,7 +70,6 @@ const Login = props => {
               value={values.username}
               onChange={handleChange}
             />
-
             <TextField
               name="password"
               label="Password"

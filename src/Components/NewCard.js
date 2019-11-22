@@ -2,6 +2,11 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Grid, Box } from "@material-ui/core";
+import AxiosWithAuth from "../Utils/AxiosWithAuth";
+import { Button } from "@material-ui/core";
+import * as Yup from "yup";
+import { Link } from "react-router-dom";
+import { Formik } from "formik";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -11,7 +16,11 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(2)
   },
   TextField: {
-    width: "100%",
+    width: "96%",
+    height: "100%"
+  },
+  TextFields: {
+    width: "98%",
     height: "100%"
   },
   paper: {
@@ -21,10 +30,6 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.secondary
   }
 }));
-
-const theme = {
-  spacing: value => value ** 2
-};
 
 const Form = props => {
   const [values, setValues] = React.useState({
@@ -47,19 +52,45 @@ const Form = props => {
 
   const classes = useStyles();
 
+  const onSubmit = event => {
+    event.preventDefault();
+
+    Object.keys(values).forEach(property => {
+      if (!values[property]) {
+        delete values[property];
+      }
+    });
+    AxiosWithAuth.post("api/card/", values)
+      .then(response => {
+        console.log(response, props);
+        // localStorage.setItem("token");
+        props.history.push("/cardlist");
+      })
+      .catch(error => console.log("Creating A Card Error", error.response));
+  };
+
   return (
-    <form>
-      <div className={classes.root}>
-        <Box
-          border={1}
-          borderRadius={6}
-          width={500}
-          p={2}
-          className={classes.box}
-        >
-          <Grid container spacing={1} className={classes.root}>
-            <Grid item xs={6}>
-              <div className={classes.paper}>
+    <Formik
+      validationSchema={Yup.object().shape({
+        first_name: Yup.string().required("First Name is Required"),
+        last_name: Yup.string().required("Last Name is Required"),
+        phone: Yup.string().required("Phone Number is Required"),
+        email: Yup.string().required("Email is Required"),
+        job: Yup.string().required("Job is Required"),
+        company: Yup.string().required("Company Name is Required")
+      })}
+    >
+      <form onSubmit={onSubmit}>
+        <div className={classes.root}>
+          <Box
+            border={1}
+            borderRadius={6}
+            width={650}
+            p={2}
+            className={classes.box}
+          >
+            <Grid container spacing={2} className={classes.root}>
+              <Grid xs={6}>
                 <TextField
                   className={classes.TextField}
                   name="first_name"
@@ -69,10 +100,8 @@ const Form = props => {
                   value={values.firstname}
                   onChange={handleChange}
                 />
-              </div>
-            </Grid>
-            <Grid item xs={6}>
-              <div className={classes.paper}>
+              </Grid>
+              <Grid xs={6}>
                 <TextField
                   className={classes.TextField}
                   name="last_name"
@@ -82,12 +111,10 @@ const Form = props => {
                   value={values.lastname}
                   onChange={handleChange}
                 />
-              </div>
-            </Grid>
-            <Grid item xs={12}>
-              <div className={classes.paper}>
+              </Grid>
+              <Grid xs={12}>
                 <TextField
-                  className={classes.TextField}
+                  className={classes.TextFields}
                   name="phone"
                   label="Phone"
                   variant="outlined"
@@ -95,26 +122,19 @@ const Form = props => {
                   value={values.phone}
                   onChange={handleChange}
                 />
-              </div>
-            </Grid>
-            <Grid item xs={12}>
-                  
-              <div className={classes.paper}>
+              </Grid>
+              <Grid xs={12}>
                 <TextField
-                  className={classes.TextField}
+                  className={classes.TextFields}
                   name="email"
                   label="your@email.com"
-                  fullWidth
                   variant="outlined"
+                  margin="normal"
                   value={values.email}
                   onChange={handleChange}
                 />
-                            
-              </div>
-                          
-            </Grid>
-            <Grid item xs={6}>
-              <div className={classes.paper}>
+              </Grid>
+              <Grid xs={6}>
                 <TextField
                   className={classes.TextField}
                   name="company"
@@ -124,10 +144,8 @@ const Form = props => {
                   value={values.company}
                   onChange={handleChange}
                 />
-              </div>
-            </Grid>
-            <Grid item xs={6}>
-              <div className={classes.paper}>
+              </Grid>
+              <Grid xs={6}>
                 <TextField
                   className={classes.TextField}
                   name="job"
@@ -137,7 +155,73 @@ const Form = props => {
                   value={values.job}
                   onChange={handleChange}
                 />
-              </div>
+              </Grid>
+              <Grid xs={12}>
+                <TextField
+                  className={classes.TextFields}
+                  name="street"
+                  label="Street"
+                  variant="outlined"
+                  margin="normal"
+                  value={values.street}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid xs={6}>
+                <TextField
+                  className={classes.TextField}
+                  name="city"
+                  label="City"
+                  variant="outlined"
+                  margin="normal"
+                  value={values.city}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid xs={6}>
+                <TextField
+                  className={classes.TextField}
+                  name="zip"
+                  label="ZIP"
+                  variant="outlined"
+                  margin="normal"
+                  value={values.zip}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid xs={12}>
+                <TextField
+                  className={classes.TextFields}
+                  name="state"
+                  label="State"
+                  variant="outlined"
+                  margin="normal"
+                  value={values.state}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid xs={12}>
+                <TextField
+                  className={classes.TextFields}
+                  name="country"
+                  label="Country"
+                  variant="outlined"
+                  margin="normal"
+                  value={values.country}
+                  onChange={handleChange}
+                />
+              </Grid>
+              <Grid xs={12}>
+                <TextField
+                  className={classes.TextFields}
+                  name="website"
+                  label="Website"
+                  variant="outlined"
+                  margin="normal"
+                  value={values.website}
+                  onChange={handleChange}
+                />
+              </Grid>
             </Grid>
             <Grid item xs={12}>
                    
@@ -232,10 +316,15 @@ const Form = props => {
               </div>
                           
             </Grid>
-          </Grid>
-        </Box>
-      </div>
-    </form>
+          </Box>
+        </div>
+        <Link to="/confirm">
+          <Button type="submit" variant="contained" color="secondary">
+            Submit!
+          </Button>
+        </Link>
+      </form>
+    </Formik>
   );
 };
 
