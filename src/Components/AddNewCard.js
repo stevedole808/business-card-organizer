@@ -241,9 +241,11 @@ const AddNewCard = props => {
               </div>
             </Grid>
           </Grid>
-          <Button onClick={saveEdit} variant="contained" color="secondary">
+          <div className="buttons">
+          <Button onClick={saveEdit} variant="contained" color="primary">
             Save
           </Button>
+          </div>
         </Box>
       </div>
     </form>

@@ -31,9 +31,6 @@ const Scanner = (props) => {
       <p>Please scan QR code</p>
       <p>{result}</p>
       {/* {waitForScan(result)} */}
-      <Link to='/newcard'>
-        <Button>Fill out a form instead</Button>
-      </Link>
     </div>
   )
 }

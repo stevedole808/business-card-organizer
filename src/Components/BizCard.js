@@ -8,7 +8,8 @@ import {
   CardActions,
   Collapse,
   CardMedia,
-  CardContent
+  CardContent,
+  Grid
 } from "@material-ui/core";
 import clsx from "clsx";
 import IconButton from "@material-ui/core/IconButton";
@@ -21,7 +22,7 @@ import AxiosWithAuth from "../Utils/AxiosWithAuth";
 
 const useStyles = makeStyles(theme => ({
   card: {
-    width: 750,
+    width: 400,
     marginTop: 50
   },
   media: {
@@ -62,7 +63,8 @@ export const BizCard = props => {
       });
   };
 
-  return (
+  return (  
+    <Grid s={8} m={4}>
     <Card className={classes.card}>
       <CardHeader
         action={
@@ -121,9 +123,12 @@ export const BizCard = props => {
           <Typography variant="body1" color="textPrimary" component="p">
             {`${props.website}`}
           </Typography>
+          <div className='container'>
           <QRCode value={`${props.qr}`} size={384} renderAs="svg" />
+          </div>
         </CardContent>
       </Collapse>
     </Card>
+    </Grid>
   );
 };

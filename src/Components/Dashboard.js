@@ -74,15 +74,15 @@ const Dashboard = () => {
   }, []);
   return (
     <div className="container">
-      <div className={classes.root}>
+      <div className={`${classes.root} dash-cards`}>
         <Grid
           container
-          spacing={8}
+          spacing={4}
           direction="row"
-          justify="center"
+          justify="space-around"
           alignItems="center"
         >
-          <Grid item xs={6} s={12}>
+          <Grid item xs={6} s={10}>
             <Card className="card">
               <CardContent>
                 <Typography variant="body2" color="textPrimary" component="h5">
@@ -96,7 +96,7 @@ const Dashboard = () => {
               </Link>
             </Card>
           </Grid>
-          <Grid item xs={6} s={12}>
+          <Grid item xs={6} s={10}>
             <Card className="card">
               <CardContent>
                 <Typography variant="body2" color="textPrimary" component="h5">
@@ -112,7 +112,7 @@ const Dashboard = () => {
           </Grid>
         </Grid>
       </div>
-      <CardList cards={cards} setCards={setCards} />
+      <CardList cards={cards} setCards={setCards} className='bizcard' />
     </div>
   );
 };

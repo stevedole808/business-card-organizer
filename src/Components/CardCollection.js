@@ -7,7 +7,7 @@ import { CollectedCard } from "./CollectedCard";
 
 const useStyles = makeStyles(theme => ({
   card: {
-    width: 750,
+    width: 425,
     marginTop: 50
   },
   media: {
@@ -48,7 +48,7 @@ const CardList = props => {
       });
   }, []);
   return (
-    <div className={`${classes.root}`}>
+    <div className={`${classes.root} container`}>
       <TextField
         id="standard-search"
         label="Search for event"
@@ -75,7 +75,7 @@ const CardList = props => {
               })
               .map(card => {
                 return (
-                  <Grid xs={6} s={10}>
+                  <Grid xs={4}>
                     <CollectedCard
                       key={card.id}
                       first_name={card.first_name}

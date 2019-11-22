@@ -23,7 +23,7 @@ import AxiosWithAuth from "../Utils/AxiosWithAuth";
 
 const useStyles = makeStyles(theme => ({
   card: {
-    width: 750,
+    width: 425,
     marginTop: 50
   },
   media: {
@@ -113,13 +113,13 @@ export const CollectedCard = props => {
         }
       />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography variant="h3" color="textSecondary" component="p">
           {`${props.first_name} ${props.last_name}`}
         </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography variant="subtitle1" color="textSecondary" component="p">
           {`${props.phone} ${props.email}`}
         </Typography>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography variant="h5" color="textSecondary" component="p">
           {`${props.job} ${props.company}`}
         </Typography>
         {editing ? (
@@ -150,18 +150,15 @@ export const CollectedCard = props => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>rest of info in typography tags</Typography>
           <Typography variant="body2" color="textSecondary" component="p">
             {`${props.street} ${props.city}, ${props.state} ${props.zip} ${props.country}`}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body1" color="textSecondary" component="p">
             {`${props.website}`}
           </Typography>
-          <CardMedia
-            className={classes.media}
-            image="src/Images/wikipediaQR.svg"
-            title="QR code"
-          />
+          <div className='container'>
+          <QRCode value={`${props.qr}`} size={384} renderAs="svg" />
+          </div>
         </CardContent>
       </Collapse>
     </Card>

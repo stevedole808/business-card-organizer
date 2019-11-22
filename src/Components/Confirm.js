@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Typography } from '@material-ui/core';
+import { Button, Typography, Grid } from '@material-ui/core';
 import { BizCard } from './BizCard';
 import AxiosWithAuth from '../Utils/AxiosWithAuth';
 import clsx from 'clsx';
@@ -67,7 +67,7 @@ const Confirm = props => {
         timer.current = setTimeout(() => {
           setSuccess(true);
           setLoading(false);
-        }, 2000);
+        }, 1000);
       }
     };
 
@@ -90,11 +90,11 @@ const Confirm = props => {
     };
 
     useEffect(() => {
-        console.log('confirm props',typeof Number(userId))
+        // console.log('confirm props', Number(userId))
          AxiosWithAuth()
             .get(`api/cards/${props.history.location.state.id}`)
             .then(response => {
-                // console.log(response)
+                console.log(response)
                 setCard(response.data)
             })
             .catch(error => {
@@ -103,7 +103,8 @@ const Confirm = props => {
     }, [])
     
     return(
-        <>
+        <div className='container'>
+          <Grid xs={6} s={10}>
             <BizCard 
                 first_name={card.first_name}
                 last_name={card.last_name}
@@ -119,6 +120,7 @@ const Confirm = props => {
                 website={card.website}
                 qr={card.id}
             />
+            <div className='container'>
             <Typography variant="body2" color="textPrimary" component="h5">
                   Save this card to your collection?
             </Typography>
@@ -137,11 +139,13 @@ const Confirm = props => {
                 Add
                 </Button>
                 {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
-                <Link to='/scanner'>
+                <Link to='/scanner' className='btn'>
                     <Button>Cancel</Button>
                 </Link>
+              </div>
             </div>
-        </>
+          </Grid>
+        </div>
   );
 }
 
