@@ -90,11 +90,11 @@ const Confirm = props => {
     };
 
     useEffect(() => {
-        // console.log('confirm props', Number(userId))
+        // console.log('confirm props', props.history.location.state.id)
          AxiosWithAuth()
             .get(`api/cards/${props.history.location.state.id}`)
             .then(response => {
-                console.log(response)
+                console.log('confirm res', response)
                 setCard(response.data)
             })
             .catch(error => {
