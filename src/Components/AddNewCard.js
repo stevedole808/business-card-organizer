@@ -4,8 +4,27 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Grid, Box, Button } from "@material-ui/core";
 
-const color = {
-  backgroundColor: "#909090"
+const useStyles = makeStyles(theme => ({
+  root: {
+    flexGrow: 1
+  },
+  box: {
+    margin: theme.spacing(2)
+  },
+  TextField: {
+    width: "100%",
+    height: "100%"
+  },
+  paper: {
+    textAlign: "center",
+    padding: theme.spacing(0),
+    textAlign: "center",
+    color: theme.palette.text.secondary
+  }
+}));
+
+const theme = {
+  spacing: value => value ** 2
 };
 
 const initialUser = {
@@ -20,13 +39,14 @@ const initialUser = {
   zip: null,
   state: null,
   country: null,
-  website: null
+  website: null,
+  user_id: Number(localStorage.getItem("userId"))
 };
-
-const EditUserCard = props => {
+console.log(typeof localStorage.getItem("userId"));
+const AddNewCard = props => {
   const [editing, setEditing] = useState(false);
   const [userToEdit, setUserToEdit] = useState(initialUser);
-  const useStyles = makeStyles();
+
   //   const editUser = user => {
   //   setEditing(true);
   //     setUserToEdit(user);
@@ -41,9 +61,9 @@ const EditUserCard = props => {
     });
     console.log(userToEdit);
     AxiosWithAuth()
-      .put(`api/cards/${props.match.params.id}`, userToEdit)
+      .post(`api/cards/`, userToEdit)
       .then(response => {
-        console.log("put res data", response.data);
+        console.log("post res data", response.data);
         props.history.push("/protected");
       });
   };
@@ -229,4 +249,4 @@ const EditUserCard = props => {
     </form>
   );
 };
-export default EditUserCard;
+export default AddNewCard;
