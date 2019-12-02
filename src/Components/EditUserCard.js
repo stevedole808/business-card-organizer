@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AxiosWithAuth from "../Utils/AxiosWithAuth";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -32,6 +32,20 @@ const EditUserCard = props => {
   //     setUserToEdit(user);
   //   };
 
+  useEffect(() => {
+    AxiosWithAuth()
+      .get(`api/cards/${props.match.params.id}`)
+      .then(res => {
+        console.log(res.data);
+        setUserToEdit({ ...res.data });
+        console.log(userToEdit);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
+
+  console.log(props);
   const saveEdit = e => {
     e.preventDefault();
     Object.keys(userToEdit).forEach(property => {
@@ -69,11 +83,12 @@ const EditUserCard = props => {
                 <TextField
                   className={classes.TextField}
                   name="first_name"
-                  label="First Name"
+                  label="First Name"
                   margin="normal"
                   variant="outlined"
-                  value={userToEdit.firstname}
+                  value={userToEdit.first_name}
                   onChange={handleChange}
+                  InputLabelProps={{ shrink: true }}
                 />
               </div>
             </Grid>
@@ -85,8 +100,9 @@ const EditUserCard = props => {
                   label="Last Name"
                   margin="normal"
                   variant="outlined"
-                  value={userToEdit.lastname}
+                  value={userToEdit.last_name}
                   onChange={handleChange}
+                  InputLabelProps={{ shrink: true }}
                 />
               </div>
             </Grid>
@@ -100,6 +116,7 @@ const EditUserCard = props => {
                   margin="normal"
                   value={userToEdit.phone}
                   onChange={handleChange}
+                  InputLabelProps={{ shrink: true }}
                 />
               </div>
             </Grid>
@@ -113,6 +130,7 @@ const EditUserCard = props => {
                   variant="outlined"
                   value={userToEdit.email}
                   onChange={handleChange}
+                  InputLabelProps={{ shrink: true }}
                 />
               </div>
             </Grid>
@@ -126,6 +144,7 @@ const EditUserCard = props => {
                   variant="outlined"
                   value={userToEdit.company}
                   onChange={handleChange}
+                  InputLabelProps={{ shrink: true }}
                 />
               </div>
             </Grid>
@@ -139,6 +158,7 @@ const EditUserCard = props => {
                   variant="outlined"
                   value={userToEdit.job}
                   onChange={handleChange}
+                  InputLabelProps={{ shrink: true }}
                 />
               </div>
             </Grid>
@@ -152,6 +172,7 @@ const EditUserCard = props => {
                   variant="outlined"
                   value={userToEdit.street}
                   onChange={handleChange}
+                  InputLabelProps={{ shrink: true }}
                 />
               </div>
             </Grid>
@@ -165,6 +186,7 @@ const EditUserCard = props => {
                   margin="normal"
                   value={userToEdit.city}
                   onChange={handleChange}
+                  InputLabelProps={{ shrink: true }}
                 />
               </div>
             </Grid>
@@ -178,6 +200,7 @@ const EditUserCard = props => {
                   margin="normal"
                   value={userToEdit.zip}
                   onChange={handleChange}
+                  InputLabelProps={{ shrink: true }}
                 />
               </div>
             </Grid>
@@ -191,6 +214,7 @@ const EditUserCard = props => {
                   fullWidth
                   value={userToEdit.state}
                   onChange={handleChange}
+                  InputLabelProps={{ shrink: true }}
                 />
               </div>
             </Grid>
@@ -204,6 +228,7 @@ const EditUserCard = props => {
                   fullWidth
                   value={userToEdit.country}
                   onChange={handleChange}
+                  InputLabelProps={{ shrink: true }}
                 />
               </div>
             </Grid>
@@ -217,6 +242,7 @@ const EditUserCard = props => {
                   fullWidth
                   value={userToEdit.website}
                   onChange={handleChange}
+                  InputLabelProps={{ shrink: true }}
                 />
               </div>
             </Grid>

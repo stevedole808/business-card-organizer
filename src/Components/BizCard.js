@@ -63,72 +63,82 @@ export const BizCard = props => {
       });
   };
 
-  return (  
+  return (
     <Grid s={8} m={4}>
-    <Card className={classes.card}>
-      <CardHeader
-        action={
-          <div>
-            <NavLink to={`/editusercard/${props.id}`}>
-              <Fab
-                size="small"
-                color="secondary"
-                aria-label="edit"
-                className={classes.fab}
-              >
-                <EditIcon />
-              </Fab>
-            </NavLink>
+      <Card className={classes.card}>
+        <CardHeader
+          action={
+            <div>
+              <NavLink to={`/editusercard/${props.id}`}>
+                <Fab
+                  size="small"
+                  color="secondary"
+                  aria-label="edit"
+                  className={classes.fab}
+                >
+                  <EditIcon />
+                </Fab>
+              </NavLink>
 
-            <IconButton
-              size="small"
-              color="primary"
-              aria-label="delete"
-              className={classes.fab}
-              onClick={deleteCard}
-            >
-              <DeleteIcon />
-            </IconButton>
-          </div>
-        }
-      />
-      <CardContent>
-        <Typography variant="h3" color="textPrimary" component="p">
-          {`${props.first_name} ${props.last_name}`}
-        </Typography>
-        <Typography variant="subtitle1" color="textPrimary" component="p">
-          {`${props.phone} ${props.email}`}
-        </Typography>
-        <Typography variant="h5" color="textSecondary" component="p">
-          {`${props.job} ${props.company}`}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
+              <IconButton
+                size="small"
+                color="primary"
+                aria-label="delete"
+                className={classes.fab}
+                onClick={deleteCard}
+              >
+                <DeleteIcon />
+              </IconButton>
+            </div>
+          }
+        />
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {`${props.street} ${props.city}, ${props.state} ${props.zip} ${props.country}`}
+          <Typography variant="h3" color="textPrimary" component="p">
+            {`${props.first_name !== null ? props.first_name : ""} ${
+              props.last_name !== null ? props.last_name : ""
+            }`}
           </Typography>
-          <Typography variant="body1" color="textPrimary" component="p">
-            {`${props.website}`}
+          <Typography variant="subtitle1" color="textPrimary" component="p">
+            {`${props.phone !== null ? props.phone : ""} ${
+              props.email !== null ? props.email : ""
+            }`}
           </Typography>
-          <div className='container'>
-          <QRCode value={`${props.qr}`} size={384} renderAs="svg" />
-          </div>
+          <Typography variant="h5" color="textSecondary" component="p">
+            {`${props.job !== null ? props.job : ""} ${
+              props.company !== null ? props.company : ""
+            }`}
+          </Typography>
         </CardContent>
-      </Collapse>
-    </Card>
+        <CardActions disableSpacing>
+          <IconButton
+            className={clsx(classes.expand, {
+              [classes.expandOpen]: expanded
+            })}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon />
+          </IconButton>
+        </CardActions>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <CardContent>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {`${props.street !== null ? props.street : ""} ${
+                props.city !== null ? props.city : ""
+              }, ${props.state !== null ? props.state : ""} ${
+                props.zip !== null ? props.zip : ""
+              } ${props.country !== null ? props.country : ""}`}
+            </Typography>
+            <Typography variant="body1" color="textPrimary" component="p">
+              {`${props.website !== null ? props.website : ""}`}
+            </Typography>
+            <div className="container">
+              <QRCode value={`${props.qr}`} size={384} renderAs="svg" />
+            </div>
+          </CardContent>
+        </Collapse>
+      </Card>
     </Grid>
   );
 };

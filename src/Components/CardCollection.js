@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { BizCard } from "./BizCard";
 import AxiosWithAuth from "../Utils/AxiosWithAuth";
-import { Grid, TextField } from "@material-ui/core";
+import { Grid, TextField, InputAdornment } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { CollectedCard } from "./CollectedCard";
-
+import SearchIcon from "@material-ui/icons/Search";
 const useStyles = makeStyles(theme => ({
   card: {
     width: 425,
@@ -51,13 +51,20 @@ const CardList = props => {
     <div className={`${classes.root} container`}>
       <TextField
         id="standard-search"
-        label="Search for event"
+        placeholder="Search"
         type="search"
         className={classes.textField}
         margin="normal"
         onChange={handleChange}
         name="search"
         value={search}
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon />
+            </InputAdornment>
+          )
+        }}
       />
       <Grid
         container
@@ -70,8 +77,14 @@ const CardList = props => {
           ? cards
               .filter(card => {
                 const event = card.event.toLowerCase();
+                const firstName = card.first_name.toLowerCase();
+                const lastName = card.last_name.toLowerCase();
                 const filter = search.toLowerCase();
-                return event.includes(filter);
+                return (
+                  event.includes(filter) ||
+                  firstName.includes(filter) ||
+                  lastName.includes(filter)
+                );
               })
               .map(card => {
                 return (
